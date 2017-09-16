@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PovSharp", "PovSharp\PovSharp.csproj", "{770C1F3D-B12D-411B-9CC6-E6A20C7F8B2D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PovSharp.tests", "PovSharp.tests\PovSharp.tests.csproj", "{38AD2783-53BB-415E-AD41-94B6AE6FC66A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{770C1F3D-B12D-411B-9CC6-E6A20C7F8B2D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{770C1F3D-B12D-411B-9CC6-E6A20C7F8B2D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{770C1F3D-B12D-411B-9CC6-E6A20C7F8B2D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38AD2783-53BB-415E-AD41-94B6AE6FC66A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38AD2783-53BB-415E-AD41-94B6AE6FC66A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38AD2783-53BB-415E-AD41-94B6AE6FC66A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38AD2783-53BB-415E-AD41-94B6AE6FC66A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
