@@ -38,6 +38,14 @@ namespace PovSharp.tests.Values
             Assert.IsNull(n.Name);
             Assert.AreEqual(n.Value, 5);
         }
-    }
 
+        [TestMethod]
+        public void TestPovCode()
+        {
+            PovNumber n = 5;
+            Assert.AreEqual(n.ToPovCode(), "5");
+             n = 5.2;
+            Assert.AreEqual(n.ToPovCode(), "5.2");
+        }
+    }
 }
