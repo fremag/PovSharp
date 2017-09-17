@@ -1,4 +1,4 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26730.15
@@ -7,10 +7,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PovSharp", "PovSharp\PovSha
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PovSharp.tests", "PovSharp.tests\PovSharp.tests.csproj", "{38AD2783-53BB-415E-AD41-94B6AE6FC66A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PovSharp.XUnit", "PovSharp.XUnit\PovSharp.XUnit.csproj", "{0538633D-9954-4912-96CC-4E682A7B47FA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{770C1F3D-B12D-411B-9CC6-E6A20C7F8B2D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -21,6 +27,18 @@ Global
 		{38AD2783-53BB-415E-AD41-94B6AE6FC66A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38AD2783-53BB-415E-AD41-94B6AE6FC66A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38AD2783-53BB-415E-AD41-94B6AE6FC66A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0538633D-9954-4912-96CC-4E682A7B47FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0538633D-9954-4912-96CC-4E682A7B47FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0538633D-9954-4912-96CC-4E682A7B47FA}.Debug|x64.ActiveCfg = Debug|x64
+		{0538633D-9954-4912-96CC-4E682A7B47FA}.Debug|x64.Build.0 = Debug|x64
+		{0538633D-9954-4912-96CC-4E682A7B47FA}.Debug|x86.ActiveCfg = Debug|x86
+		{0538633D-9954-4912-96CC-4E682A7B47FA}.Debug|x86.Build.0 = Debug|x86
+		{0538633D-9954-4912-96CC-4E682A7B47FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0538633D-9954-4912-96CC-4E682A7B47FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0538633D-9954-4912-96CC-4E682A7B47FA}.Release|x64.ActiveCfg = Release|x64
+		{0538633D-9954-4912-96CC-4E682A7B47FA}.Release|x64.Build.0 = Release|x64
+		{0538633D-9954-4912-96CC-4E682A7B47FA}.Release|x86.ActiveCfg = Release|x86
+		{0538633D-9954-4912-96CC-4E682A7B47FA}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
