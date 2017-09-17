@@ -37,6 +37,11 @@ namespace PovSharp.Values
             {
                 return Value == num.Value;
             }
+            
+            if (other is double)
+            {
+                return Value == (double)other;
+            }
             return false;
         }
 
