@@ -1,5 +1,6 @@
 using System;
 using Xunit;
+using NFluent;
 
 namespace PovSharp.XUnit
 {
@@ -8,6 +9,7 @@ namespace PovSharp.XUnit
         [Fact]
         public void Test1()
         {
+            Check.That(1).IsEqualTo(1);
 
         }
     }
