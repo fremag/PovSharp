@@ -5,7 +5,7 @@ namespace PovSharp.tests.Values
 {
 
     [TestClass]
-    public class NumberMSTests
+    public class NumberTests
     {
         [TestMethod]
         public void TestName()
@@ -44,8 +44,24 @@ namespace PovSharp.tests.Values
         {
             PovNumber n = 5;
             Assert.AreEqual(n.ToPovCode(), "5");
-             n = 5.2;
+            n = 5.2;
             Assert.AreEqual(n.ToPovCode(), "5.2");
+        }
+
+        [TestMethod]
+        public void TestEquals()
+        {
+            PovNumber n = 5;
+            Assert.AreEqual(n, 5);
+        }
+        [TestMethod]
+        public void TestEquals2()
+        {
+            PovNumber n = 5;
+            Assert.IsTrue(n.Equals(5.0));
+            Assert.IsTrue(n.Equals(5));
+            Assert.IsTrue(n.Equals(new PovNumber("test", 5)));
+            Assert.IsFalse(n.Equals(new PovNumber("test", 6)));
         }
     }
 }
