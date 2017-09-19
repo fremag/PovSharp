@@ -1,20 +1,19 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using NFluent;
+﻿using NFluent;
 using PovSharp.Values;
+using Xunit;
 
 namespace PovSharp.tests.Values
 {
-    [TestClass]
     public class NumberTests
     {
-        [TestMethod]
+        [Fact]
         public void TestName()
         {
             var n = new PovNumber("x");
             Check.That(n.Name).IsEqualTo("x");
         }
 
-        [TestMethod]
+        [Fact]
         public void TestValue()
         {
             var n = new PovNumber(5);
@@ -22,7 +21,7 @@ namespace PovSharp.tests.Values
             Check.That(n.Value).IsEqualTo(5);
         }
 
-        [TestMethod]
+        [Fact]
         public void TestClone()
         {
             var n = new PovNumber(5);
@@ -31,7 +30,7 @@ namespace PovSharp.tests.Values
             Check.That(m.Value).IsEqualTo(5);
         }
 
-        [TestMethod]
+        [Fact]
         public void TestDoubleOperator()
         {
             PovNumber n = 5;
@@ -39,7 +38,7 @@ namespace PovSharp.tests.Values
             Check.That(n.Value).IsEqualTo(5);
         }
 
-        [TestMethod]
+        [Fact]
         public void TestPovCode()
         {
             PovNumber n = 5;
@@ -48,13 +47,14 @@ namespace PovSharp.tests.Values
             Check.That(n.ToPovCode()).IsEqualTo("5.2");
         }
 
-        [TestMethod]
+        [Fact]
         public void TestEquals()
         {
             PovNumber n = 5;
             Check.That(n).IsEqualTo(5);
         }
-        [TestMethod]
+        
+        [Fact]
         public void TestEquals2()
         {
             PovNumber n = 5;
