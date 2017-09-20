@@ -4,8 +4,11 @@ namespace PovSharp.Values
 {
     public class PovVector : AbstractPovValue
     {
+        [PovField(0, Before="<", After=",")]
         public PovNumber X { get; set; }
+        [PovField(1, After=",")]
         public PovNumber Y { get; set; }
+        [PovField(2, After=">")]
         public PovNumber Z { get; set; }
         
         public PovVector() : base(null) {}

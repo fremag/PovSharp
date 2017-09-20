@@ -5,12 +5,12 @@ namespace PovSharp.Core
         public AbstractPovElement PovElement { get; set; }
         public string End { get; set; }
 
-        public DeclareElement(string name, AbstractPovElement povElement, string end ) : base(name)
+        public DeclareElement(string name, AbstractPovElement povElement, string end=";") : base(name)
         {
             PovElement = povElement;
             End = end;
         }
 
-        public override string ToPovCode() => $"#declare {Name} = {PovElement.ToPovCode()}{End}";
+        public override string ToPovCode() => $"#declare {Name} = {PovElement.Name ?? PovElement.ToPovCode()}{End}";
     }
 }

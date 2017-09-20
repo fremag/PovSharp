@@ -42,9 +42,15 @@ namespace PovSharp.Core
                 {
                     povCode += afterArg;
                 }
+                if( ! string.IsNullOrEmpty(povCode)) 
+                {
+                    dico[idx] = povCode;
+                }
+                
             }
-
-            return null;
+            var values = dico.Values;
+            var result = string.Join(" ", values.Where( v => ! string.IsNullOrWhiteSpace(v)));
+            return result;
         }
 
         private static string GetPovCode(AbstractPovElement povElement)
