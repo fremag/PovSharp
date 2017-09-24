@@ -117,7 +117,7 @@ namespace PovSharp.tests.Values
         {
             PovNumber n1 = 5;
             PovNumber n2 = 4;
-            Check.That(n1 != n2).IsFalse();
+            Check.That(n1 != n2).IsTrue();
         }
     }
 }
