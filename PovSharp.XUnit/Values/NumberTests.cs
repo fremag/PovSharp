@@ -63,5 +63,61 @@ namespace PovSharp.tests.Values
             Check.That(n.Equals(new PovNumber("test", 5))).IsTrue();
             Check.That(n.Equals(new PovNumber("test", 6))).IsFalse();
         }
+
+        [Fact]
+        public void TestEqualsOperator1()
+        {
+            PovNumber n1 = 5;
+            PovNumber n2 = 5;
+            Check.That(n1 == n2).IsTrue();
+        }
+        
+        [Fact]
+        public void TestEqualsOperator2()
+        {
+            PovNumber n1 = 5;
+            PovNumber n2 = 4;
+            Check.That(n1 == n2).IsFalse();
+        }
+        [Fact]
+        public void TestEqualsOperatorWithDouble1()
+        {
+            PovNumber n1 = 5;
+            Check.That(n1 == 5).IsTrue();
+        }
+        [Fact]
+        public void TestEqualsOperatorWithDouble2()
+        {
+            PovNumber n1 = null;
+            Check.That(n1 == 5).IsFalse();
+        }
+        [Fact]
+        public void TestEqualsOperatorWithNullValues()
+        {
+            PovNumber n1 = 5;
+            PovNumber n2 = null;
+            Check.That(n1 == null).IsFalse();
+            Check.That(n1 == n2).IsFalse();
+            Check.That(null == n1).IsFalse();
+            Check.That(n2 == n1).IsFalse();
+            Check.That(n2 == null).IsTrue();
+            Check.That(null == n2).IsTrue();
+        }
+        
+        [Fact]
+        public void TestNotEqualsOperator1()
+        {
+            PovNumber n1 = 5;
+            PovNumber n2 = 5;
+            Check.That(n1 != n2).IsFalse();
+        }
+        
+        [Fact]
+        public void TestNotEqualsOperator2()
+        {
+            PovNumber n1 = 5;
+            PovNumber n2 = 4;
+            Check.That(n1 != n2).IsFalse();
+        }
     }
 }

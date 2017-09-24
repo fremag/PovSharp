@@ -37,7 +37,7 @@ namespace PovSharp.Values
             {
                 return Value == num.Value;
             }
-            
+
             if (other is double)
             {
                 return Value == (double)other;
@@ -48,6 +48,44 @@ namespace PovSharp.Values
         public override int GetHashCode()
         {
             return Value.GetHashCode();
+        }
+
+        public static bool operator ==(PovNumber num1, PovNumber num2)
+        {
+            if ((object)num1 == null && (object)num2 != null)
+            {
+                return false;
+            }
+            if ((object)num1 != null && (object)num2 == null)
+            {
+                return false;
+            }
+            if ((object)num1 == null && (object)num2 == null)
+            {
+                return true;
+            }
+
+            return num1.Value == num2.Value;
+        }
+
+        public static bool operator !=(PovNumber num1, PovNumber num2)
+        {
+            return !(num1 == num2);
+        }
+
+        public static bool operator ==(PovNumber num1, double num2)
+        {
+            if ((object)num1 == null)
+            {
+                return false;
+            }
+
+            return num1.Value == num2;
+        }
+        
+        public static bool operator !=(PovNumber num1, double num2)
+        {
+            return !(num1 == num2);
         }
     }
 }
