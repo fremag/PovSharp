@@ -24,6 +24,13 @@ namespace PovSharp.Values
         public PovVector(string name, double d) : this(name, d, d, d) { }
         public PovVector(double d) : this(null, d, d, d) { }
 
+        public PovVector(int x, int y, int z) : base(null)
+        {
+            X = x;
+            Y = y;
+            Z = z;
+        }
+
         public override string ToPovCode() => this.BuildPovCode();
         public override string ToString() => $"{Name ?? "NoName"}: < {X}, {Y}, {Z}>";
 
