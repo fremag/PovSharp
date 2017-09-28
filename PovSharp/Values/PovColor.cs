@@ -31,8 +31,10 @@ namespace PovSharp.Values
         { }
 
         public PovColor() : base(null)
-        {
-        }
+        { }
+
+        public PovColor(double rgb) : this(rgb, rgb, rgb)
+        { }
 
         public override string ToPovCode() => this.BuildPovCode();
         public override string ToString() => $"{Name ?? "NoName"}: < {Red}, {Green}, {Blue}>";
