@@ -1,4 +1,5 @@
 using NFluent;
+using PovSharp.Core;
 using PovSharp.Scenes;
 using PovSharp.Values;
 using Xunit;
@@ -38,9 +39,21 @@ namespace PovSharp.XUnit.Scenes
             PovVector v0 = new PovVector("myLocation");
             PovVector v1 = new PovVector(0);
             
-            Camera cam = new Camera("myCam") {Location=v0, LookAt=v1};
+            var cam = new Camera("myCam") {Location=v0, LookAt=v1};
             var povCode = cam.ToPovCode();
             Check.That(povCode).IsEqualTo("camera {\n location myLocation\n look_at <0, 0, 0>\n}");
+        }
+
+        [Fact]
+        public void TestPovDeclareCamera()
+        {
+            PovVector v0 = new PovVector("myLocation");
+            PovVector v1 = new PovVector(0);
+            
+            var cam = new Camera {Location=v0, LookAt=v1};
+            var decl = new DeclareElement("myCam", cam, ";"); 
+            var povCode = decl.ToPovCode();
+            Check.That(povCode).IsEqualTo("#declare myCam = camera {\n location myLocation\n look_at <0, 0, 0>\n};");
         }
     }
 }
