@@ -8,14 +8,14 @@ namespace PovSharp.Core
     {
         private static readonly SortedDictionary<int, string> dico = new SortedDictionary<int, string>();
 
-        public static string BuildPovCode(this object obj) 
+        public static string BuildPovCode(this object obj)
         {
             var props = obj.GetType()
             .GetProperties()
             .Where(propInfo => propInfo.GetCustomAttributes(typeof(PovFieldAttribute), true).Any());
             var dico = new SortedDictionary<int, string>();
 
-            foreach(var prop in props) 
+            foreach (var prop in props)
             {
                 var att = prop.GetCustomAttributesData().FirstOrDefault(data => data.AttributeType == typeof(PovFieldAttribute));
                 var idx = (int)(att.ConstructorArguments[0].Value);
@@ -23,33 +23,35 @@ namespace PovSharp.Core
                 var propValue = prop.GetValue(obj);
                 var povElement = propValue as AbstractPovElement;
                 string povCode = null;
-                if( povElement != null) 
+                if (povElement != null)
                 {
                     povCode = GetPovCode(povElement);
-                } 
-                else if (propValue.GetType().IsEnum) 
+                }
+                else if (propValue != null && propValue.GetType().IsEnum)
                 {
                     povCode = GetEnumPovCode(propValue);
                 }
 
-                var beforeArg = att.NamedArguments.FirstOrDefault(arg => arg.MemberName == nameof(PovFieldAttribute.Before)).TypedValue.Value as string;
-                var afterArg  = att.NamedArguments.FirstOrDefault(arg => arg.MemberName == nameof(PovFieldAttribute.After)).TypedValue.Value as string;
-                if( ! string.IsNullOrEmpty(beforeArg) && ! string.IsNullOrEmpty(povCode)) 
+                if (!string.IsNullOrEmpty(povCode))
                 {
-                    povCode = beforeArg+povCode;
+                    var beforeArg = att.NamedArguments.FirstOrDefault(arg => arg.MemberName == nameof(PovFieldAttribute.Before)).TypedValue.Value as string;
+                    var afterArg = att.NamedArguments.FirstOrDefault(arg => arg.MemberName == nameof(PovFieldAttribute.After)).TypedValue.Value as string;
+                    if (!string.IsNullOrEmpty(beforeArg) && !string.IsNullOrEmpty(povCode))
+                    {
+                        povCode = beforeArg + povCode;
+                    }
+                    if (!string.IsNullOrEmpty(afterArg) && !string.IsNullOrEmpty(povCode))
+                    {
+                        povCode += afterArg;
+                    }
+                    if (!string.IsNullOrEmpty(povCode))
+                    {
+                        dico[idx] = povCode;
+                    }
                 }
-                if( ! string.IsNullOrEmpty(afterArg) && ! string.IsNullOrEmpty(povCode)) 
-                {
-                    povCode += afterArg;
-                }
-                if( ! string.IsNullOrEmpty(povCode)) 
-                {
-                    dico[idx] = povCode;
-                }
-                
             }
             var values = dico.Values;
-            var result = string.Join(" ", values.Where( v => ! string.IsNullOrWhiteSpace(v)));
+            var result = string.Join(" ", values.Where(v => !string.IsNullOrWhiteSpace(v)));
             return result;
         }
 
@@ -62,7 +64,7 @@ namespace PovSharp.Core
         private static string GetEnumPovCode(object propValue)
         {
             string povCode = propValue.ToString();
-            if( povCode == "none") 
+            if (povCode == "none")
             {
                 return string.Empty;
             }
