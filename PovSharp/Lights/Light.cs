@@ -18,6 +18,6 @@ namespace PovSharp.Lights
         [PovField(1, After="\n")]
         public PovColor Color {get;set;} = new PovColor(1);
 
-        public override string Type => "light";
+        public override string Type => "light_source";
     }
 }
