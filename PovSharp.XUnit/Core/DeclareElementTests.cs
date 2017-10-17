@@ -12,7 +12,8 @@ namespace PovSharp.XUnit.Core
         {
             var myNum = new PovNumber(5);
             var declElem = new DeclareElement("myVar", myNum, string.Empty);
-            Check.That(declElem.Name).IsEqualTo("myVar");
+            Check.That(declElem.Name).IsNull();
+            Check.That(myNum.Name).IsEqualTo("myVar");
             Check.That(declElem.PovElement).IsEqualTo(myNum);
             Check.That(declElem.End).IsEqualTo(string.Empty);
         }
@@ -22,7 +23,8 @@ namespace PovSharp.XUnit.Core
         {
             var myNum = new PovNumber(5);
             var declElem = new DeclareElement("myVar", myNum);
-            Check.That(declElem.Name).IsEqualTo("myVar");
+            Check.That(declElem.Name).IsNull();
+            Check.That(myNum.Name).IsEqualTo("myVar");
             Check.That(declElem.PovElement).IsEqualTo(myNum);
             Check.That(declElem.End).IsEqualTo(";");
         }
