@@ -33,7 +33,7 @@ namespace PovSharp.XUnit.Lights
             var light = new Light() { Location = v0, Color = new PovColor(1) };
             var decl = new DeclareElement("myLight", light);
             var povCode = decl.ToPovCode();
-            Check.That(povCode).IsEqualTo("#declare myLight = light {\n myLocation, rgb <1, 1, 1>\n};");
+            Check.That(povCode).IsEqualTo("#declare myLight = light_source {\n myLocation, rgb <1, 1, 1>\n};");
         }
     }
 }
