@@ -36,7 +36,7 @@ light_source {
 };
 
 MySphere
-```code
+```
 
 I use C#:
 ```C#
