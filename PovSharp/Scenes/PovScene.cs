@@ -6,6 +6,9 @@ namespace PovSharp.Scenes
 {
     public class PovScene
     {
+        public string Name {get; set;}
+        public string Description {get; set;}
+        
         protected List<AbstractPovElement> Elements {get;} = new List<AbstractPovElement>();
         public T Declare<T>(string elementName, T element) where T : AbstractPovElement {
             DeclareElement decl = new DeclareElement(elementName, element);

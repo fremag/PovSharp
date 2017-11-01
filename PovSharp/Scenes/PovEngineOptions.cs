@@ -32,6 +32,13 @@ namespace PovSharp.Scenes
         [PovArgumentName("Preview_End_Size")]
         public int PreviewEndSize { get; set; }
 
+        [PovArgumentName("Display")]
+        public bool Display {get; set;} =false;
+
+        [PovArgumentName("Pause_When_Done")]
+        public bool PauseWhenDone {get; set;} =false;
+
+
         public string[] GetPovArgs() 
         {
             List<string> args = new List<string>();
