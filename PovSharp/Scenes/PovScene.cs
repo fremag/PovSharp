@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using PovSharp.Core;
+using PovSharp.Values;
 
 namespace PovSharp.Scenes
 {
@@ -22,5 +23,20 @@ namespace PovSharp.Scenes
         }
 
         public IEnumerable<string> ToPovCode() => Elements.Select(element => element.Name ?? element.ToPovCode());
+
+#region Helpers
+        public PovVector _V(double d) 
+        {
+            return new PovVector(d);
+        }
+        public PovVector _V(double x, double y, double z) 
+        {
+            return new PovVector(x, y, z);
+        }
+        public PovNumber _N(double d) 
+        {
+            return new PovNumber(d);
+        }
+#endregion
     }
 }
