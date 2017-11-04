@@ -6,8 +6,11 @@ namespace PovSharp.Core
     {
         public string Name { get; set; }
         public abstract string ToPovCode();
+        public AbstractPovElement() {
 
-        protected AbstractPovElement(string name)
+        }
+
+        protected AbstractPovElement(string name) : this()
         {
             Name = name;
         }
