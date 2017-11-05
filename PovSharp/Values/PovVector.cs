@@ -18,6 +18,8 @@ namespace PovSharp.Values
             Y = y;
             Z = z;
         }
+        public PovVector( PovNumber x, PovNumber y, PovNumber z) : this(null, x, y, z)
+        { }
 
         public PovVector(double x, double y, double z) : this(null, x, y, z) { }
         public PovVector(string name) : this(name, 0, 0, 0) { }

@@ -11,6 +11,7 @@ namespace PovSharp.Transformations
         }
 
         public Translation(PovVector vector) : base(vector) {}
+        public Translation(PovNumber x, PovNumber y, PovNumber z) : base(new PovVector(x, y, z)) {}
 
         public override string Type => "translate";
     }
