@@ -8,6 +8,14 @@ namespace PovSharp.Core
         public string Separator { get; set; } = ", ";
         private List<AbstractPovElement> InnerList = new List<AbstractPovElement>();
 
+        public PovList(string separator)
+        {
+            Separator = separator;
+        }
+        public PovList()
+        {
+        }
+
         public PovList<T> Add(T povElement)
         {
             InnerList.Add(povElement);

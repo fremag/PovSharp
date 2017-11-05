@@ -5,7 +5,7 @@ namespace PovSharp.Textures
 {
     public class Pigment : AbstractObjectModifier
     {
-        [PovField(0, Before="color ", After="\n")]
+        [PovField(0, Before="color", After="\n")]
        public  PovColor Color {get; set;} = new PovColor(0, 0, 0); // default: black
 
         public Pigment() : base(null)

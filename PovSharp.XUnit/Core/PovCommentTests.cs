@@ -35,17 +35,17 @@ namespace PovSharp.XUnit.Core
             string povCode = string.Join("\n", scene.ToPovCode());
             var myScene = @"/* Some comment */
 camera {
- location <7, 7, 7>
- look_at <0, 0, 0>
+ location < 7, 7, 7>
+ look_at < 0, 0, 0>
 }
 light_source {
- <5, 5, 5>, rgb <1, 1, 1>
+ < 5, 5, 5>, rgb < 1, 1, 1>
 }
 #declare MySphere = sphere {
- <0, 0, 0>, 1
+ < 0, 0, 0>, 1
 
 pigment {
- color rgb <1, 1, 1>
+ color rgb < 1, 1, 1>
 }};
 /* Some comment again */
 MySphere";

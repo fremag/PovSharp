@@ -22,7 +22,7 @@ namespace PovSharp.XUnit.Transformations
         {
             var rotation = new Rotation(new PovVector(45, 90, 180));
             var povCode = rotation.ToPovCode();
-            Check.That( povCode).IsEqualTo("rotate <45, 90, 180>\n");
+            Check.That( povCode).IsEqualTo("rotate < 45, 90, 180>\n");
         }
         [Fact]
         public void TestRotationPovCode2()
@@ -36,7 +36,7 @@ namespace PovSharp.XUnit.Transformations
         {
             var rotation = new Rotation(new PovVector{X = new PovNumber("myNumber", 45), Y= 90, Z=180});
             var povCode = rotation.ToPovCode();
-            Check.That( povCode).IsEqualTo("rotate <myNumber, 90, 180>\n");
+            Check.That( povCode).IsEqualTo("rotate < myNumber, 90, 180>\n");
         }
     }
 }

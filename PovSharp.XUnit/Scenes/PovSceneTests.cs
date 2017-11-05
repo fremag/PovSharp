@@ -13,17 +13,17 @@ namespace PovSharp.XUnit.Scenes
     public class PovSceneTests
     {
             private string  myScene = @"camera {
- location <7, 7, 7>
- look_at <0, 0, 0>
+ location < 7, 7, 7>
+ look_at < 0, 0, 0>
 }
 light_source {
- <5, 5, 5>, rgb <1, 1, 1>
+ < 5, 5, 5>, rgb < 1, 1, 1>
 }
 #declare MySphere = sphere {
- <0, 0, 0>, 1
+ < 0, 0, 0>, 1
 
 pigment {
- color rgb <1, 1, 1>
+ color rgb < 1, 1, 1>
 }};
 MySphere".Replace("\r", string.Empty);
         [Fact]

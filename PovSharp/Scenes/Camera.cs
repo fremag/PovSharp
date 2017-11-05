@@ -13,22 +13,22 @@ namespace PovSharp.Scenes
 
         public override string Type => "camera";
 
-        [PovField(0, Before = "location ", After = "\n")]
+        [PovField(0, Before = "location", After = "\n")]
         public PovVector Location { get; set; } = null; // default is null so we use Pov default value
 
-        [PovField(1, Before = "right ", After = "\n")]
+        [PovField(1, Before = "right", After = "\n")]
         public PovVector Right { get; set; } = null;
         
-        [PovField(2, Before = "up ", After = "\n")]
+        [PovField(2, Before = "up", After = "\n")]
         public PovVector Up { get; set; } = null;
         
-        [PovField(3, Before = "direction ", After = "\n")]
+        [PovField(3, Before = "direction", After = "\n")]
         public PovVector Direction { get; set; } = null;
         
-        [PovField(4, Before = "sky ", After = "\n")]
+        [PovField(4, Before = "sky", After = "\n")]
         public PovVector Sky { get; set; } = null;
 
-        [PovField(5, Before = "look_at ", After = "\n")]
+        [PovField(5, Before = "look_at", After = "\n")]
         public PovVector LookAt { get; set; } = null;
     }
 }

@@ -13,7 +13,7 @@ namespace PovSharp.XUnit.Objects
              var sphere = new Sphere();
              var povObj = new PovObject(sphere);
              string povCode = povObj.ToPovCode();
-             Check.That(povCode).IsEqualTo("object {\n sphere {\n <0, 0, 0>, 1\n}\n}");
+             Check.That(povCode).IsEqualTo("object {\n sphere {\n < 0, 0, 0>, 1\n}\n}");
          }
          [Fact]
          public void PovObjectWithNameTest()

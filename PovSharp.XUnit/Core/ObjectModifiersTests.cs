@@ -17,7 +17,7 @@ namespace PovSharp.XUnit.Core
 
             sphere.AddModifiers(pigment);
             var povCode = sphere.ToPovCode();
-            Check.That(povCode).IsEqualTo("sphere {\n <0, 0, 0>, 1\n\npigment {\n color rgb <1, 1, 1>\n}}");
+            Check.That(povCode).IsEqualTo("sphere {\n < 0, 0, 0>, 1\n\npigment {\n color rgb < 1, 1, 1>\n}}");
         }
         
         [Fact]
@@ -29,7 +29,7 @@ namespace PovSharp.XUnit.Core
 
             box.AddModifiers(pigment);
             var povCode = box.ToPovCode();
-            Check.That(povCode).IsEqualTo("box {\n <0, 0, 0>, <1, 1, 1>\n\npigment {\n color rgb <1, 1, 1>\n}}");
+            Check.That(povCode).IsEqualTo("box {\n < 0, 0, 0>, < 1, 1, 1>\n\npigment {\n color rgb < 1, 1, 1>\n}}");
         }
     }
 }

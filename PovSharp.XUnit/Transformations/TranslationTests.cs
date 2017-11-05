@@ -22,7 +22,7 @@ namespace PovSharp.XUnit.Transformations
         {
             var Translation = new Translation(new PovVector(45, 90, 180));
             var povCode = Translation.ToPovCode();
-            Check.That( povCode).IsEqualTo("translate <45, 90, 180>\n");
+            Check.That( povCode).IsEqualTo("translate < 45, 90, 180>\n");
         }
         [Fact]
         public void TestTranslationPovCode2()
@@ -36,7 +36,7 @@ namespace PovSharp.XUnit.Transformations
         {
             var Translation = new Translation(new PovVector{X = new PovNumber("myNumber", 45), Y= 90, Z=180});
             var povCode = Translation.ToPovCode();
-            Check.That( povCode).IsEqualTo("translate <myNumber, 90, 180>\n");
+            Check.That( povCode).IsEqualTo("translate < myNumber, 90, 180>\n");
         }
     }
 }

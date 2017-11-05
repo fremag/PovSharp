@@ -30,7 +30,7 @@ namespace PovSharp.XUnit.Objects
         {
             var sphere = new Sphere("mySphere") { Radius = 1.234, Center = new PovVector(1, 2, 3) };
             var povCode = sphere.ToPovCode();
-            Check.That(povCode).IsEqualTo("sphere {\n <1, 2, 3>, 1.234\n}");
+            Check.That(povCode).IsEqualTo("sphere {\n < 1, 2, 3>, 1.234\n}");
         }
         [Fact]
         public void TestToPovCodeWithName()

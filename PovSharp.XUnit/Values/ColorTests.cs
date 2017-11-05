@@ -51,25 +51,25 @@ namespace PovSharp.XUnit.Values
         public void TestPovCode1()
         {
             var c = new PovColor();
-            Check.That(c.ToPovCode()).IsEqualTo("rgb <0, 0, 0>");
+            Check.That(c.ToPovCode()).IsEqualTo("rgb < 0, 0, 0>");
         }
         [Fact]
         public void TestPovCode2()
         {
             var c = new PovColor() {Red = 1, Green = 0, Blue = 0};
-            Check.That(c.ToPovCode()).IsEqualTo("rgb <1, 0, 0>");
+            Check.That(c.ToPovCode()).IsEqualTo("rgb < 1, 0, 0>");
         }
         [Fact]
         public void TestPovCode3()
         {
             var c = new PovColor(1, 1, 0);
-            Check.That(c.ToPovCode()).IsEqualTo("rgb <1, 1, 0>");
+            Check.That(c.ToPovCode()).IsEqualTo("rgb < 1, 1, 0>");
         }
         [Fact]
         public void TestPovCode4()
         {
             var c = new PovColor("Black");
-            Check.That(c.ToPovCode()).IsEqualTo("rgb <0, 0, 0>");
+            Check.That(c.ToPovCode()).IsEqualTo("rgb < 0, 0, 0>");
         }
         [Fact]
         public void TestPovCode5()

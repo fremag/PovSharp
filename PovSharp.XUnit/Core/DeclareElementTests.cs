@@ -51,7 +51,7 @@ namespace PovSharp.XUnit.Core
             var myNum = new PovVector(5);
             var declElem = new DeclareElement("myVar", myNum);
             var povCode = declElem.ToPovCode();
-            Check.That(povCode).IsEqualTo("#declare myVar = <5, 5, 5>;");
+            Check.That(povCode).IsEqualTo("#declare myVar = < 5, 5, 5>;");
         }
 
         [Fact]
@@ -68,7 +68,7 @@ namespace PovSharp.XUnit.Core
             var myNum = new PovNumber("myNum", 5);
             PovVector myVect = new PovVector { X = myNum, Y = 2, Z = myNum };
             var declElem = new DeclareElement("myVar", myVect);
-            Check.That(declElem.ToPovCode()).IsEqualTo("#declare myVar = <myNum, 2, myNum>;");
+            Check.That(declElem.ToPovCode()).IsEqualTo("#declare myVar = < myNum, 2, myNum>;");
         }
 
     }

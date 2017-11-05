@@ -66,7 +66,7 @@ namespace PovSharp.tests.Values
         {
             var v = new PovVector(5);
             var povCode = v.ToPovCode();
-            Check.That(povCode).IsEqualTo("<5, 5, 5>");
+            Check.That(povCode).IsEqualTo("< 5, 5, 5>");
         }
 
         [Fact]
@@ -74,7 +74,7 @@ namespace PovSharp.tests.Values
         {
             var v = new PovVector(1, 2, 3);
             var povCode = v.ToPovCode();
-            Check.That(povCode).IsEqualTo("<1, 2, 3>");
+            Check.That(povCode).IsEqualTo("< 1, 2, 3>");
         }
 
         [Fact]
@@ -82,7 +82,7 @@ namespace PovSharp.tests.Values
         {
             var v = new PovVector() {X = new PovNumber("myNum", 1), Y = 2, Z = 0};
             var povCode = v.ToPovCode();
-            Check.That(povCode).IsEqualTo("<myNum, 2, 0>");
+            Check.That(povCode).IsEqualTo("< myNum, 2, 0>");
         }
 
         [Fact]
@@ -91,7 +91,7 @@ namespace PovSharp.tests.Values
             var num = new PovNumber("myNum", 1);
             var v = new PovVector() {X = num, Y = 2, Z = num};
             var povCode = v.ToPovCode();
-            Check.That(povCode).IsEqualTo("<myNum, 2, myNum>");
+            Check.That(povCode).IsEqualTo("< myNum, 2, myNum>");
         }
     }
 }

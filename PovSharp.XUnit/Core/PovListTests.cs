@@ -30,7 +30,7 @@ namespace PovSharp.XUnit.Core
 
             spheres.Add(s1).Add(s2).Add(s3);
             var povCode = spheres.ToPovCode();
-            Check.That(povCode).IsEqualTo("sphere {\n <0, 0, 0>, 1\n}\nMySphere\nsphere {\n <2, 2, 2>, 3\n}");
+            Check.That(povCode).IsEqualTo("sphere {\n < 0, 0, 0>, 1\n}\nMySphere\nsphere {\n < 2, 2, 2>, 3\n}");
         }
     }
 }

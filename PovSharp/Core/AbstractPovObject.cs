@@ -7,23 +7,38 @@ namespace PovSharp.Core
     {
         public abstract string Type { get; }
         private List<AbstractObjectModifier> Modifiers { get; } = new List<AbstractObjectModifier>();
+        protected AbstractPovObject() : this(null)
+        {
+
+        }
+
         protected AbstractPovObject(string name) : base(name)
         {
         }
 
-        public override string ToPovCode() {
+        public override string ToPovCode()
+        {
             string povCode = $"{Type} {{\n {this.BuildPovCode()}";
-            if(Modifiers.Any()) {
+            if (Modifiers.Any())
+            {
                 povCode += "\n";
                 povCode += string.Join("\n", Modifiers.Select(mod => mod.ToPovCode()));
             }
             povCode += "}";
             return povCode;
-        } 
+        }
 
-        public AbstractPovObject AddModifiers(AbstractObjectModifier modifiers)
+        public AbstractPovObject AddModifiers(AbstractObjectModifier modifier)
         {
-            Modifiers.Add(modifiers);
+            Modifiers.Add(modifier);
+            return this;
+        }
+        public AbstractPovObject AddModifiers(params AbstractObjectModifier[] modifiers)
+        {
+            foreach (var modifier in modifiers)
+            {
+                Modifiers.Add(modifier);
+            }
             return this;
         }
     }

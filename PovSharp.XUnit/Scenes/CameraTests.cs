@@ -41,7 +41,7 @@ namespace PovSharp.XUnit.Scenes
             
             var cam = new Camera("myCam") {Location=v0, LookAt=v1};
             var povCode = cam.ToPovCode();
-            Check.That(povCode).IsEqualTo("camera {\n location myLocation\n look_at <0, 0, 0>\n}");
+            Check.That(povCode).IsEqualTo("camera {\n location myLocation\n look_at < 0, 0, 0>\n}");
         }
 
         [Fact]
@@ -53,7 +53,7 @@ namespace PovSharp.XUnit.Scenes
             var cam = new Camera {Location=v0, LookAt=v1};
             var decl = new DeclareElement("myCam", cam, ";"); 
             var povCode = decl.ToPovCode();
-            Check.That(povCode).IsEqualTo("#declare myCam = camera {\n location myLocation\n look_at <0, 0, 0>\n};");
+            Check.That(povCode).IsEqualTo("#declare myCam = camera {\n location myLocation\n look_at < 0, 0, 0>\n};");
         }
     }
 }

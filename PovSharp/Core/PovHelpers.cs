@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace PovSharp.Core
 {
@@ -11,7 +12,7 @@ namespace PovSharp.Core
         public static string BuildPovCode(this object obj)
         {
             var props = obj.GetType()
-            .GetProperties()
+            .GetProperties(BindingFlags.Public|BindingFlags.NonPublic|BindingFlags.Instance)
             .Where(propInfo => propInfo.GetCustomAttributes(typeof(PovFieldAttribute), true).Any());
             var dico = new SortedDictionary<int, string>();
 
@@ -38,7 +39,7 @@ namespace PovSharp.Core
                     var afterArg = att.NamedArguments.FirstOrDefault(arg => arg.MemberName == nameof(PovFieldAttribute.After)).TypedValue.Value as string;
                     if (!string.IsNullOrEmpty(beforeArg) && !string.IsNullOrEmpty(povCode))
                     {
-                        povCode = beforeArg + povCode;
+                        povCode = $"{beforeArg} {povCode}";
                     }
                     if (!string.IsNullOrEmpty(afterArg) && !string.IsNullOrEmpty(povCode))
                     {

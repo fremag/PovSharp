@@ -30,7 +30,7 @@ namespace PovSharp.XUnit.Objects
         {
             var box = new Box("myBox") { Corner1 =  new PovVector(1), Corner2= new PovVector(-1) };
             var povCode = box.ToPovCode();
-            Check.That(povCode).IsEqualTo("box {\n <1, 1, 1>, <-1, -1, -1>\n}");
+            Check.That(povCode).IsEqualTo("box {\n < 1, 1, 1>, < -1, -1, -1>\n}");
         }
         [Fact]
         public void TestToPovCodeWithName()
