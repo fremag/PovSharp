@@ -19,6 +19,14 @@ namespace PovSharp.Objects
         [PovField(3, Before = "sturm", After = "\n")]
         public bool? Sturm { get; set; } = null;
 
+        public Blob(string name) : base(name)
+        {
+        }
+
+        public Blob()
+        {
+        }
+
         public Blob AddSphere(PovVector center, PovNumber radius, PovNumber strength, params AbstractObjectModifier[] modifiers) {
             var sphere = new SphereBlobElement {Center = center, Radius = radius, Strength = strength};
             sphere.AddModifiers(modifiers);
