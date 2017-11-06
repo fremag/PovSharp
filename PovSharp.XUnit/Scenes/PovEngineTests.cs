@@ -39,6 +39,10 @@ namespace PovSharp.XUnit.Scenes
             cylinder.AddModifiers(new Translation(-2,0,0));
             scene.Add(cylinder);
 
+            var plane = new Plane();
+            plane.AddModifiers(new Pigment() {Color = new PovColor(1, 0, 0)});
+            scene.Add(plane);
+
             var path = engine.Render(scene, options, false);
         }
     }
