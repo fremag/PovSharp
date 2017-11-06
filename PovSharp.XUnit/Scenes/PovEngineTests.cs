@@ -32,6 +32,13 @@ namespace PovSharp.XUnit.Scenes
             cone.AddModifiers(new Pigment() {Color = new PovColor(0, 1, 1)});
             cone.AddModifiers(new Translation(2,0,0));
             scene.Add(cone);
+
+
+            var cylinder = new Cylinder();
+            cylinder.AddModifiers(new Pigment() {Color = new PovColor(1, 0, 1)});
+            cylinder.AddModifiers(new Translation(-2,0,0));
+            scene.Add(cylinder);
+
             var path = engine.Render(scene, options, false);
         }
     }
