@@ -2,7 +2,7 @@
 using Xunit;
 using NFluent;
 
-namespace PovSharp.tests.Values
+namespace PovSharp.XUnit.Values
 {
     public class VectorTests
     {

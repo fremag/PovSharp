@@ -2,7 +2,7 @@
 using PovSharp.Values;
 using Xunit;
 
-namespace PovSharp.tests.Values
+namespace PovSharp.XUnit.Values
 {
     public class NumberTests
     {
