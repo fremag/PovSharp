@@ -1,12 +1,16 @@
 using System.Collections.Generic;
 using System.Linq;
+using PovSharp.Values;
 
 namespace PovSharp.Core
 {
     public class PovList<T> : AbstractPovElement where T : AbstractPovElement
     {
         public string Separator { get; set; } = ", ";
+
         private List<AbstractPovElement> InnerList = new List<AbstractPovElement>();
+
+        public PovNumber Count => InnerList.Count;
 
         public PovList(string separator)
         {
