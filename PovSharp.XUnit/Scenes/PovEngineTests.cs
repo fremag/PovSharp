@@ -13,34 +13,39 @@ namespace PovSharp.XUnit.Scenes
         public PovEngineTests()
         {
             var sphere = new Sphere();
-            sphere.AddModifiers(new Pigment() {Color = new PovColor(0, 0, 1)});
+            sphere.AddModifiers(new Pigment() { Color = new PovColor(0, 0, 1) });
             scene.Declare("MySphere", sphere);
             scene.Add(sphere);
         }
 
-        [Fact(Skip="true")]
-        public void BasicSceneTest() 
+        [Fact(Skip = "true")]
+        public void BasicSceneTest()
         {
             scene.Name = "TestBlueSphere";
             var path = engine.Render(scene, options, false);
         }
-        [Fact(Skip="true")]
-        public void DemoSceneTest() 
+        [Fact]//(Skip="true")]
+        public void DemoSceneTest()
         {
             scene.Name = "TestDemo";
             var cone = new Cone();
-            cone.AddModifiers(new Pigment() {Color = new PovColor(0, 1, 1)});
-            cone.AddModifiers(new Translation(2,0,0));
+            cone.AddModifiers(new Pigment() { Color = new PovColor(0, 1, 1) });
+            cone.AddModifiers(new Translation(2, 0, 0));
             scene.Add(cone);
 
 
             var cylinder = new Cylinder();
-            cylinder.AddModifiers(new Pigment() {Color = new PovColor(1, 0, 1)});
-            cylinder.AddModifiers(new Translation(-2,0,0));
+            cylinder.AddModifiers(new Pigment() { Color = new PovColor(1, 0, 1) });
+            cylinder.AddModifiers(new Translation(-2, 0, 0));
             scene.Add(cylinder);
 
-            var plane = new Plane();
-            plane.AddModifiers(new Pigment() {Color = new PovColor(1, 0, 0)});
+            var ovus = new Ovus();
+            ovus.AddModifiers(new Pigment() { Color = new PovColor(1, 1, 0) });
+            ovus.AddModifiers(new Translation(0, 0, 2));
+            scene.Add(ovus);
+
+            var plane = new Plane() { Distance = -1 };
+            plane.AddModifiers(new Pigment() { Color = new PovColor(1, 0, 0) });
             scene.Add(plane);
 
             var path = engine.Render(scene, options, false);
