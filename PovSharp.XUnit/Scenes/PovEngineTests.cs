@@ -24,8 +24,8 @@ namespace PovSharp.XUnit.Scenes
             scene.Name = "TestBlueSphere";
             var path = engine.Render(scene, options, false);
         }
-        
-        [Fact]//(Skip="true")]
+
+        [Fact(Skip="true")]
         public void DemoSceneTest()
         {
             scene.Name = "TestDemo";
