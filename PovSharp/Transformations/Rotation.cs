@@ -14,6 +14,10 @@ namespace PovSharp.Transformations
         {
         }
 
+        public Rotation(PovNumber x, PovNumber y, PovNumber z ) : base(x, y, z)
+        {
+        }
+
         public override string Type => "rotate";
     }
 }

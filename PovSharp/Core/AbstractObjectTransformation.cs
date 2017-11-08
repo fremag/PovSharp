@@ -19,6 +19,9 @@ namespace PovSharp.Core
         public AbstractObjecTransformation(PovVector vector) : this(null, vector)
         { }
 
+        public AbstractObjecTransformation(PovNumber x, PovNumber y, PovNumber z) : this(null, new PovVector(x, y, z))
+        { }
+
         public override string ToPovCode()
         {
             string povCode = $"{Type} {this.BuildPovCode()}\n";

@@ -14,6 +14,10 @@ namespace PovSharp.Transformations
             Vector = new PovVector(1, 1, 1);
         }
 
+        public Scale(PovNumber x, PovNumber y, PovNumber z ) : base(x, y, z)
+        {
+        }
+
         public override string Type => "scale";
     }
 }
