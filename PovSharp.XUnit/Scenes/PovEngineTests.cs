@@ -31,7 +31,7 @@ namespace PovSharp.XUnit.Scenes
             var path = engine.Render(scene, options, false);
         }
 
-        [Fact]//(Skip = "true")]
+        [Fact(Skip = "true")]
         public void DemoObjectsTest()
         {
             scene.Name = "DemoObjects";
@@ -82,7 +82,7 @@ namespace PovSharp.XUnit.Scenes
 
             var path = engine.Render(scene, options, false);
         }
-        [Fact]//(Skip="true")]
+        [Fact(Skip="true")]
         public void CsgDemoTest()
         {
             scene.Name = "TestCsg";
