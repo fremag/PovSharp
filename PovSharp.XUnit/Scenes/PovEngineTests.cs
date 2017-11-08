@@ -24,7 +24,7 @@ namespace PovSharp.XUnit.Scenes
             scene.Name = "TestBlueSphere";
             var path = engine.Render(scene, options, false);
         }
-        [Fact(Skip="true")]
+        [Fact]//(Skip="true")]
         public void DemoSceneTest()
         {
             scene.Name = "TestDemo";
@@ -57,6 +57,13 @@ namespace PovSharp.XUnit.Scenes
             var plane = new Plane() { Distance = -1 };
             plane.AddModifiers(new Pigment() { Color = new PovColor(1, 0.5, 0.25) });
             scene.Add(plane);
+
+            var lathe = new Lathe();
+            lathe.Add(2, 0).Add(3, 0).Add(3, 1).Add(2, 5).Add(2, 0);
+            lathe.AddModifiers(new Pigment() { Color = new PovColor(0.5, 1, 0.5) });
+            lathe.AddModifiers(new Scale(new PovVector(0.25, 0.25, 0.25)));
+            lathe.AddModifiers(new Translation(2, 0, -2));
+            scene.Add(lathe);
 
             var path = engine.Render(scene, options, false);
         }
