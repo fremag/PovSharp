@@ -12,8 +12,9 @@ namespace PovSharp.Core
         public static string BuildPovCode(this object obj)
         {
             var props = obj.GetType()
-            .GetProperties(BindingFlags.Public|BindingFlags.NonPublic|BindingFlags.Instance)
-            .Where(propInfo => propInfo.GetCustomAttributes(typeof(PovFieldAttribute), true).Any());
+            .GetProperties(BindingFlags.Public|BindingFlags.NonPublic|BindingFlags.Instance|BindingFlags.FlattenHierarchy)
+            .Where(propInfo => propInfo.GetCustomAttributes(typeof(PovFieldAttribute), true).Any())
+            .ToArray();
             var dico = new SortedDictionary<int, string>();
 
             foreach (var prop in props)

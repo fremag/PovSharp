@@ -1,3 +1,4 @@
+using PovSharp.Csg;
 using PovSharp.Lights;
 using PovSharp.Objects;
 using PovSharp.Scenes;
@@ -12,6 +13,10 @@ namespace PovSharp.XUnit.Scenes
     {
         public PovEngineTests()
         {
+        }
+
+        public void AddBlueSphere()
+        {
             var sphere = new Sphere();
             sphere.AddModifiers(new Pigment() { Color = new PovColor(0, 0, 1) });
             scene.Declare("MySphere", sphere);
@@ -22,13 +27,16 @@ namespace PovSharp.XUnit.Scenes
         public void BasicSceneTest()
         {
             scene.Name = "TestBlueSphere";
+            AddBlueSphere();
             var path = engine.Render(scene, options, false);
         }
 
-        [Fact(Skip="true")]
-        public void DemoSceneTest()
+        [Fact]//(Skip = "true")]
+        public void DemoObjectsTest()
         {
-            scene.Name = "TestDemo";
+            scene.Name = "DemoObjects";
+            AddBlueSphere();
+
             var cone = new Cone();
             cone.AddModifiers(new Pigment() { Color = new PovColor(0, 1, 1) });
             cone.AddModifiers(new Translation(2, 0, 0));
@@ -72,6 +80,40 @@ namespace PovSharp.XUnit.Scenes
             sor.AddModifiers(new Translation(2, 0, 2));
             scene.Add(sor);
 
+            var path = engine.Render(scene, options, false);
+        }
+        [Fact]//(Skip="true")]
+        public void CsgDemoTest()
+        {
+            scene.Name = "TestCsg";
+
+            var cylinderX = new Cylinder() { BasePoint = new PovVector(-2, 0, 0), CapPoint = new PovVector(2, 0, 0), Radius = 0.5 };
+            var cylinderY = new Cylinder() { BasePoint = new PovVector(0, -2, 0), CapPoint = new PovVector(0, 2, 0), Radius = 0.5 };
+            var cylinderZ = new Cylinder() { BasePoint = new PovVector(0, 0, -2), CapPoint = new PovVector(0, 0, 2), Radius = 0.5 };
+
+            var csgUnion = new CsgUnion();
+            csgUnion.Add(cylinderX).Add(cylinderY).Add(cylinderZ);
+            csgUnion.AddModifiers(new Pigment(new PovColor(1, 0, 0)));
+            scene.Add(csgUnion);
+
+            var csgIntersection = new CsgIntersection();
+            csgIntersection
+                .Add(cylinderX)
+                .Add(cylinderY)
+                .Add(cylinderZ)
+                .AddModifiers(new Pigment(new PovColor(0, 1, 0)))
+                .AddModifiers(new Translation(new PovVector(0, 0, 3)));
+
+            scene.Add(csgIntersection);
+
+            var csgDifference = new CsgDifference(cylinderX);
+            csgDifference
+                .Add(cylinderY)
+                .Add(cylinderZ)
+                .AddModifiers(new Pigment(new PovColor(0, 0, 1)))
+                .AddModifiers(new Translation(new PovVector(3, 0, -3)));
+
+            scene.Add(csgDifference);
             var path = engine.Render(scene, options, false);
         }
     }
