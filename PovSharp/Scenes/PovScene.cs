@@ -17,6 +17,12 @@ namespace PovSharp.Scenes
             element.Name = elementName;
             return element;
         }
+        public T Declare<T>(T element) where T : AbstractPovElement {
+            var name = element.Name;
+            element.Name = null;
+            Declare(name, element);
+            return element;
+        }
 
         public void Add(AbstractPovElement element) {
             Elements.Add(element);

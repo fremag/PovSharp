@@ -4,15 +4,16 @@ namespace PovSharp.Core
 {
     public class PovSpline : AbstractPovObject
     {
-        public enum SplineFlag { linear_spline, quadratic_spline, cubic_spline, natural_spline }
+        public enum SplineTypeName { linear_spline, quadratic_spline, cubic_spline, natural_spline }
 
         [PovField(0, After = "\n")]
-        public new SplineFlag? SplineType { get; set; }
+        public SplineTypeName? SplineType { get; set; }
 
         [PovField(1, After = "\n")]
-        private PovList<SplineElement> elements = new PovList<SplineElement>("\n");
+        private PovList<SplineElement> Elements { get; set; } = new PovList<SplineElement>("\n");
+
         // Spline MUST have a name so empty constructor is protected
-        public PovSpline()
+        protected PovSpline()
         {
         }
 
@@ -28,10 +29,12 @@ namespace PovSharp.Core
             }
         }
 
-        public void Add(PovNumber value, PovVector vector)
+        public PovSpline Add(PovNumber value, PovVector vector)
         {
-
+            Elements.Add(new SplineElement(value, vector));
+            return this;
         }
+
         public override string Type => "spline";
 
         private class SplineElement : AbstractPovElement

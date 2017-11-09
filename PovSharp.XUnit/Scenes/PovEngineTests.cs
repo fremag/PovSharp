@@ -1,3 +1,4 @@
+using PovSharp.Core;
 using PovSharp.Csg;
 using PovSharp.Lights;
 using PovSharp.Objects;
@@ -82,14 +83,14 @@ namespace PovSharp.XUnit.Scenes
 
             var path = engine.Render(scene, options, false);
         }
-        [Fact]//(Skip="true")]
+        [Fact(Skip = "true")]
         public void CsgDemoTest()
         {
             scene.Name = "TestCsg";
 
-            var cylinderX = scene.Declare("cylinderX", new Cylinder() { BasePoint = new PovVector(-2,  0,  0), CapPoint = new PovVector(2, 0, 0), Radius = 0.5 });
-            var cylinderY = scene.Declare("cylinderY",  new Cylinder() { BasePoint = new PovVector( 0, -2,  0), CapPoint = new PovVector(0, 2, 0), Radius = 0.5 });
-            var cylinderZ = scene.Declare("cylinderZ", new Cylinder() { BasePoint = new PovVector( 0,  0, -2), CapPoint = new PovVector(0, 0, 2), Radius = 0.5 });
+            var cylinderX = scene.Declare("cylinderX", new Cylinder() { BasePoint = new PovVector(-2, 0, 0), CapPoint = new PovVector(2, 0, 0), Radius = 0.5 });
+            var cylinderY = scene.Declare("cylinderY", new Cylinder() { BasePoint = new PovVector(0, -2, 0), CapPoint = new PovVector(0, 2, 0), Radius = 0.5 });
+            var cylinderZ = scene.Declare("cylinderZ", new Cylinder() { BasePoint = new PovVector(0, 0, -2), CapPoint = new PovVector(0, 0, 2), Radius = 0.5 });
 
             var csgUnion = new CsgUnion()
                 .Add(cylinderX)
@@ -114,6 +115,32 @@ namespace PovSharp.XUnit.Scenes
                 .Translate(3, 0, -3);
 
             scene.Add(csgDifference);
+            var path = engine.Render(scene, options, false);
+        }
+        
+        [Fact(Skip="true")]
+        public void SplineDemoTest()
+        {
+            scene.Name = "TestSpline";
+
+            var n = scene.Declare("myNumber", new PovNumber(0.5));
+            var v = scene.Declare("myVector", new PovVector(1, 0, 3));
+
+            var spline = new PovSpline("MySpline") {SplineType = PovSpline.SplineTypeName.natural_spline}
+                           .Add(0, new PovVector(0))
+                           .Add(n, v)
+                           .Add(1, new PovVector(3, 0, 1));
+
+            scene.Declare(spline);
+            const int N = 50;
+            for (int i = 0; i < N; i++)
+            {
+                var sphere = new Sphere() 
+                    {   Center = spline[i * 1.0 / N], 
+                        Radius = 0.1 }
+                    .AddModifiers(new Pigment(new PovColor( (i/(double)N+1)/2, 0, 0)));
+                scene.Add(sphere);
+            }
             var path = engine.Render(scene, options, false);
         }
     }
