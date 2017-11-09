@@ -10,25 +10,22 @@ namespace PovSharp.XUnit.Objects
         [Fact]
         public void BasicTest()
         {
-            var Sor = new SurfaceOfRevolution();
-            Check.That(Sor.Name).IsNull();
-            Check.That(Sor.Sturm).IsNull();
-            Check.That(Sor.NbPoints).IsEqualTo(0);
-            Check.That(Sor.Spline).IsNull();
+            var sor = new SurfaceOfRevolution();
+            Check.That(sor.Name).IsNull();
+            Check.That(sor.Sturm).IsNull();
+            Check.That(sor.NbPoints).IsEqualTo(0);
         }
 
         [Fact]
         public void ConstructorTest()
         {
-            var Sor = new SurfaceOfRevolution("MySor")
+            var sor = new SurfaceOfRevolution("MySor")
             {
                 Sturm = SurfaceOfRevolution.SturmFlag.sturm,
-                Spline =SurfaceOfRevolution.SplineType.bezier_spline
             };
 
-            Check.That(Sor.Name).IsEqualTo("MySor");
-            Check.That(Sor.Sturm).IsEqualTo(SurfaceOfRevolution.SturmFlag.sturm);
-            Check.That(Sor.Spline).IsEqualTo(SurfaceOfRevolution.SplineType.bezier_spline);
+            Check.That(sor.Name).IsEqualTo("MySor");
+            Check.That(sor.Sturm).IsEqualTo(SurfaceOfRevolution.SturmFlag.sturm);
         }
         [Fact]
         public void ToPovCodeTest()
@@ -37,7 +34,6 @@ namespace PovSharp.XUnit.Objects
             {
                 Open = SurfaceOfRevolution.OpenFlag.open,
                 Sturm = SurfaceOfRevolution.SturmFlag.sturm,
-                Spline = SurfaceOfRevolution.SplineType.bezier_spline
             };
             sor.Add(0, 0).Add(6, 0).Add(6, 8).Add(0, 8).Add(0, 0)  //outer rim
                 .Add(1, 1).Add(5, 1).Add(5, 7).Add(1, 7).Add(1, 1);   //inner rim    
