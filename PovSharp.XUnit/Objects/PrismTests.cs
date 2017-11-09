@@ -31,7 +31,7 @@ namespace PovSharp.XUnit.Objects
                 Open = Prism.OpenFlag.open,
                 Sturm = Prism.SturmFlag.sturm,
                 Sweep = Prism.SweepType.conic_sweep,
-                Spline = Prism.SplineType.bezier_spline
+                Spline = Prism.ObjectSplineType.bezier_spline
             };
 
             Check.That(prism.Name).IsEqualTo("MyPrism");
@@ -39,7 +39,7 @@ namespace PovSharp.XUnit.Objects
             Check.That(prism.Height2).IsEqualTo(3);
             Check.That(prism.Open).IsEqualTo(Prism.OpenFlag.open);
             Check.That(prism.Sturm).IsEqualTo(Prism.SturmFlag.sturm);
-            Check.That(prism.Spline).IsEqualTo(Prism.SplineType.bezier_spline);
+            Check.That(prism.Spline).IsEqualTo(Prism.ObjectSplineType.bezier_spline);
             Check.That(prism.Sweep).IsEqualTo(Prism.SweepType.conic_sweep);
         }
         [Fact]
@@ -52,7 +52,7 @@ namespace PovSharp.XUnit.Objects
                 Open = Prism.OpenFlag.open,
                 Sturm = Prism.SturmFlag.sturm,
                 Sweep = Prism.SweepType.conic_sweep,
-                Spline = Prism.SplineType.bezier_spline
+                Spline = Prism.ObjectSplineType.bezier_spline
             };
             prism.Add(0, 0).Add(6, 0).Add(6, 8).Add(0, 8).Add(0, 0)  //outer rim
                 .Add(1, 1).Add(5, 1).Add(5, 7).Add(1, 7).Add(1, 1);   //inner rim    

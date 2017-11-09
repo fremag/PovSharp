@@ -8,7 +8,7 @@ namespace PovSharp.Objects
         [PovField(0, After = "\n")]
         public SweepType? Sweep { get; set; } = null;
         [PovField(1, After = "\n")]
-        public SplineType? Spline { get; set; } = null;
+        public ObjectSplineType? Spline { get; set; } = null;
         
         [PovField(2, After = ",")]
         public PovNumber Height1 { get; set; } = 0;

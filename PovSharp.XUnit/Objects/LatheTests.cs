@@ -23,12 +23,12 @@ namespace PovSharp.XUnit.Objects
             var lathe = new Lathe("MyLathe")
             {
                 Sturm = Lathe.SturmFlag.sturm,
-                Spline = Lathe.SplineType.bezier_spline
+                Spline = Lathe.ObjectSplineType.bezier_spline
             };
 
             Check.That(lathe.Name).IsEqualTo("MyLathe");
             Check.That(lathe.Sturm).IsEqualTo(Lathe.SturmFlag.sturm);
-            Check.That(lathe.Spline).IsEqualTo(Lathe.SplineType.bezier_spline);
+            Check.That(lathe.Spline).IsEqualTo(Lathe.ObjectSplineType.bezier_spline);
         }
         [Fact]
         public void ToPovCodeTest()
@@ -36,7 +36,7 @@ namespace PovSharp.XUnit.Objects
             var lathe = new Lathe("MyLathe")
             {
                 Sturm = Lathe.SturmFlag.sturm,
-                Spline = Lathe.SplineType.bezier_spline
+                Spline = Lathe.ObjectSplineType.bezier_spline
             };
             lathe.Add(0, 0).Add(6, 0).Add(6, 8).Add(0, 8).Add(0, 0)  //outer rim
                 .Add(1, 1).Add(5, 1).Add(5, 7).Add(1, 7).Add(1, 1);   //inner rim    
