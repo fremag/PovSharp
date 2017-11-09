@@ -82,14 +82,14 @@ namespace PovSharp.XUnit.Scenes
 
             var path = engine.Render(scene, options, false);
         }
-        [Fact(Skip="true")]
+        [Fact]//(Skip="true")]
         public void CsgDemoTest()
         {
             scene.Name = "TestCsg";
 
-            var cylinderX = new Cylinder() { BasePoint = new PovVector(-2,  0,  0), CapPoint = new PovVector(2, 0, 0), Radius = 0.5 };
-            var cylinderY = new Cylinder() { BasePoint = new PovVector( 0, -2,  0), CapPoint = new PovVector(0, 2, 0), Radius = 0.5 };
-            var cylinderZ = new Cylinder() { BasePoint = new PovVector( 0,  0, -2), CapPoint = new PovVector(0, 0, 2), Radius = 0.5 };
+            var cylinderX = scene.Declare("cylinderX", new Cylinder() { BasePoint = new PovVector(-2,  0,  0), CapPoint = new PovVector(2, 0, 0), Radius = 0.5 });
+            var cylinderY = scene.Declare("cylinderY",  new Cylinder() { BasePoint = new PovVector( 0, -2,  0), CapPoint = new PovVector(0, 2, 0), Radius = 0.5 });
+            var cylinderZ = scene.Declare("cylinderZ", new Cylinder() { BasePoint = new PovVector( 0,  0, -2), CapPoint = new PovVector(0, 0, 2), Radius = 0.5 });
 
             var csgUnion = new CsgUnion()
                 .Add(cylinderX)

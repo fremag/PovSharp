@@ -1,15 +1,23 @@
 using PovSharp.Core;
+using PovSharp.Objects;
 
 namespace PovSharp.Csg
 {
     public class CsgDifference : AbstractCsgObject
     {
-        [PovField(0, After="\n")]
-        public AbstractPovObject MainObject {get; set;}
+        [PovField(0, After = "\n")]
+        public AbstractPovObject MainObject { get; set; }
 
-        public CsgDifference(AbstractPovObject mainObject) 
+        public CsgDifference(AbstractPovObject mainObject)
         {
-            MainObject = mainObject;
+            if (mainObject.Name != null)
+            {
+                MainObject = new PovObject(mainObject);
+            }
+            else
+            {
+                MainObject = mainObject;
+            }
         }
 
         public CsgDifference(string name) : base(name)
