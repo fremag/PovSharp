@@ -6,7 +6,7 @@ namespace PovSharp.Objects
     public class Lathe : AbstractPovObject
     {
         [PovField(0, After = "\n")]
-        public SplineType? Spline { get; set; } = null;
+        public ObjectSplineType? Spline { get; set; } = null;
         
 
         [PovField(1, After = "\n")]
