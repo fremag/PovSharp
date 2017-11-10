@@ -117,8 +117,8 @@ namespace PovSharp.XUnit.Scenes
             scene.Add(csgDifference);
             var path = engine.Render(scene, options, false);
         }
-        
-        [Fact(Skip="true")]
+
+        [Fact(Skip = "true")]
         public void SplineDemoTest()
         {
             scene.Name = "TestSpline";
@@ -126,7 +126,7 @@ namespace PovSharp.XUnit.Scenes
             var n = scene.Declare("myNumber", new PovNumber(0.5));
             var v = scene.Declare("myVector", new PovVector(1, 0, 3));
 
-            var spline = new PovSpline("MySpline") {SplineType = PovSpline.SplineTypeName.natural_spline}
+            var spline = new PovSpline("MySpline") { SplineType = PovSpline.SplineTypeName.natural_spline }
                            .Add(0, new PovVector(0))
                            .Add(n, v)
                            .Add(1, new PovVector(3, 0, 1));
@@ -135,12 +135,33 @@ namespace PovSharp.XUnit.Scenes
             const int N = 50;
             for (int i = 0; i < N; i++)
             {
-                var sphere = new Sphere() 
-                    {   Center = spline[i * 1.0 / N], 
-                        Radius = 0.1 }
-                    .AddModifiers(new Pigment(new PovColor( (i/(double)N+1)/2, 0, 0)));
+                var sphere = new Sphere()
+                {
+                    Center = spline[i * 1.0 / N],
+                    Radius = 0.1
+                }
+                    .AddModifiers(new Pigment(new PovColor((i / (double)N + 1) / 2, 0, 0)));
                 scene.Add(sphere);
             }
+            var path = engine.Render(scene, options, false);
+        }
+
+        [Fact(Skip="true")]
+        public void SphereSweepDemoTest()
+        {
+            scene.Name = "TestSphereSweep";
+
+            var n = scene.Declare("myNumber", new PovNumber(0.5));
+            var v = scene.Declare("myVector", new PovVector(1, 0, 3));
+
+            var sphereSweep = scene.Declare("MySphereSweep", new SphereSweep() { SplineType = SphereSweep.CubicSpline }
+                            .Add(new PovVector(0), 0.5)
+                            .Add(new PovVector(-1), 1)
+                            .Add(new PovVector(1), 0.25)
+                            .Add(v, n)
+                            .Add(new PovVector(3, 0, 1), 1)
+                            .AddModifiers(new Pigment(new PovColor(1, 0,0 ))));
+            scene.Add(sphereSweep);
             var path = engine.Render(scene, options, false);
         }
     }
