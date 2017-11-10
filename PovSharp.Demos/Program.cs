@@ -1,12 +1,12 @@
 ﻿using System;
 
-namespace PovSharp
+namespace PovSharp.Demos
 {
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Hello New World!");
         }
     }
 }
