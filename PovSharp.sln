@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PovSharp", "PovSharp\PovSha
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PovSharp.XUnit", "PovSharp.XUnit\PovSharp.XUnit.csproj", "{0538633D-9954-4912-96CC-4E682A7B47FA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PovSharp.Demos", "PovSharp.Demos\PovSharp.Demos.csproj", "{DDFD4F71-2448-4D62-90E9-7F2E25E258EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,18 @@ Global
 		{0538633D-9954-4912-96CC-4E682A7B47FA}.Release|x64.Build.0 = Release|x64
 		{0538633D-9954-4912-96CC-4E682A7B47FA}.Release|x86.ActiveCfg = Release|x86
 		{0538633D-9954-4912-96CC-4E682A7B47FA}.Release|x86.Build.0 = Release|x86
+		{DDFD4F71-2448-4D62-90E9-7F2E25E258EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDFD4F71-2448-4D62-90E9-7F2E25E258EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDFD4F71-2448-4D62-90E9-7F2E25E258EF}.Debug|x64.ActiveCfg = Debug|x64
+		{DDFD4F71-2448-4D62-90E9-7F2E25E258EF}.Debug|x64.Build.0 = Debug|x64
+		{DDFD4F71-2448-4D62-90E9-7F2E25E258EF}.Debug|x86.ActiveCfg = Debug|x86
+		{DDFD4F71-2448-4D62-90E9-7F2E25E258EF}.Debug|x86.Build.0 = Debug|x86
+		{DDFD4F71-2448-4D62-90E9-7F2E25E258EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDFD4F71-2448-4D62-90E9-7F2E25E258EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DDFD4F71-2448-4D62-90E9-7F2E25E258EF}.Release|x64.ActiveCfg = Release|x64
+		{DDFD4F71-2448-4D62-90E9-7F2E25E258EF}.Release|x64.Build.0 = Release|x64
+		{DDFD4F71-2448-4D62-90E9-7F2E25E258EF}.Release|x86.ActiveCfg = Release|x86
+		{DDFD4F71-2448-4D62-90E9-7F2E25E258EF}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
