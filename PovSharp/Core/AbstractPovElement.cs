@@ -1,8 +1,9 @@
 ﻿using System;
+using PovSharp.Values;
 
 namespace PovSharp.Core
 {
-    public abstract class AbstractPovElement : ICloneable
+    public abstract class AbstractPovElement : PovValueHelpers, ICloneable
     {
         public enum OpenFlag { open }
 
