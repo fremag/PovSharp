@@ -8,14 +8,18 @@ namespace PovSharp.Demos.Droid
     {
         public DroidObject()
         {
+            Head = new DroidHead();
             Add(
-                new DroidHead().Translate(_Y)
+                Head
+                //.Translate(_Y)
             );
-            Add(
-                new DroidBody()
-            );
+            // Add(
+            //     new DroidBody()
+            // );
 
         }
+
+        public DroidHead Head { get; }
     }
     
 }
