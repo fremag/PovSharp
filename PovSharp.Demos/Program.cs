@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using PovSharp.Demos.Droid;
 using PovSharp.Lights;
 using PovSharp.Objects;
@@ -18,10 +19,14 @@ namespace PovSharp.Demos
             PovEngine engine = new PovEngine(@"c:\Program Files\POV-Ray\v3.7\bin\pvengine64.exe", @"e:\tmp");
             PovEngineOptions options = new PovEngineOptions() { Height = 480, Width = 640, PreviewStartSize = 32, PreviewEndSize = 16, PauseWhenDone = true };
 
-            var droid = new DroidObject();
+            var mainPigment = new Pigment(_White);
+            var decoPigmentMinor = new Pigment(new PovColor(0.25));
+            var decoPigmentMajor = new Pigment(_Red);
+
+            var droid = new DroidObject(mainPigment, decoPigmentMajor, decoPigmentMinor);
             droid.AddModifiers(new Pigment(new PovColor(1, 0, 0)));
 
-            scene.Add(new Camera() { Location = _V(0, 0.5, 5), LookAt = new PovVector(0) })
+            scene.Add(new Camera() { Location = _V(0, 0.20, 2), LookAt = new PovVector(0, 0.25, 0) })
             .Add(new Light())
             .Add(new Plane().AddModifiers(new Pigment(_Green)))
             .Add(new Sphere() { Center = _V(0, droid.Head.Heigth+0.1,0), Radius=0.1 }.AddModifiers(new Pigment(_Blue)))
