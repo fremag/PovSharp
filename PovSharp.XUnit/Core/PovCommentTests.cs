@@ -33,7 +33,8 @@ namespace PovSharp.XUnit.Core
             scene.Add(comment2);
             scene.Add(sphere);
             string povCode = string.Join("\n", scene.ToPovCode());
-            var myScene = @"/* Some comment */
+            var myScene = @"#include ""colors.inc""
+/* Some comment */
 camera {
  location < 7, 7, 7>
  look_at < 0, 0, 0>

@@ -12,7 +12,8 @@ namespace PovSharp.XUnit.Scenes
 {
     public class PovSceneTests
     {
-            private string  myScene = @"camera {
+            private string  myScene = @"#include ""colors.inc""
+camera {
  location < 7, 7, 7>
  look_at < 0, 0, 0>
 }

@@ -7,6 +7,11 @@ namespace PovSharp.Scenes
 {
     public class PovScene : PovValueHelpers
     {
+        public PovScene()
+        {
+            Add(new IncludeStatement{IncludeFile ="colors.inc"});
+        }
+
         public string Name {get; set;}
         public string Description {get; set;}
         
