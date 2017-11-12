@@ -39,44 +39,44 @@ namespace PovSharp.XUnit.Scenes
             AddBlueSphere();
 
             var cone = new Cone()
-                .AddModifiers(new Pigment() { Color = new PovColor(0, 1, 1) })
+                .AddModifiers(new Pigment() { Color = _Magenta })
                 .Translate(2, 0, 0);
             scene.Add(cone);
 
             var cylinder = new Cylinder()
-                .AddModifiers(new Pigment() { Color = new PovColor(1, 0, 1) })
+                .AddModifiers(new Pigment() { Color = _Cyan })
                 .Translate(-2, 0, 0);
             scene.Add(cylinder);
 
             var ovus = new Ovus()
-                .AddModifiers(new Pigment() { Color = new PovColor(1, 1, 0) })
+                .AddModifiers(new Pigment() { Color = _Yellow })
                 .Translate(0, 0, 2);
             scene.Add(ovus);
 
             var torus = new Torus()
-                .AddModifiers(new Pigment() { Color = new PovColor(0, 1, 0) })
+                .AddModifiers(new Pigment() { Color = _Green })
                 .Translate(0, 0, 5);
             scene.Add(torus);
 
             var box = new Box()
-                .AddModifiers(new Pigment() { Color = new PovColor(1, 0, 0) })
+                .AddModifiers(new Pigment() { Color = _Red })
                 .Translate(0, 0, -2);
             scene.Add(box);
 
             var plane = new Plane() { Distance = -1 };
-            plane.AddModifiers(new Pigment() { Color = new PovColor(1, 0.5, 0.25) });
+            plane.AddModifiers(new Pigment() { Color = _RGB(1, 0.5, 0.25) });
             scene.Add(plane);
 
             var lathe = new Lathe()
                 .Add(2, 0).Add(3, 0).Add(3, 1).Add(2, 5).Add(2, 0)
-                .AddModifiers(new Pigment() { Color = new PovColor(1, 1, 0.5) })
+                .AddModifiers(new Pigment() { Color = _RGB(1, 1, 0.5) })
                 .Scale(0.25, 0.25, 0.25)
                 .Translate(2, 0, -2);
             scene.Add(lathe);
 
             var sor = new SurfaceOfRevolution()
                 .Add(2, 0).Add(3, 0).Add(1, 1).Add(2, 5).Add(2, 0)
-                .AddModifiers(new Pigment() { Color = new PovColor(0.5, 1, 0.5) })
+                .AddModifiers(new Pigment() { Color = _RGB(0.5, 1, 0.5) })
                 .Scale(0.25, 0.25, 0.25)
                 .Translate(2, 0, 2);
             scene.Add(sor);
@@ -96,14 +96,14 @@ namespace PovSharp.XUnit.Scenes
                 .Add(cylinderX)
                 .Add(cylinderY)
                 .Add(cylinderZ)
-                .AddModifiers(new Pigment(new PovColor(1, 0, 0)));
+                .AddModifiers(new Pigment(_Red));
             scene.Add(csgUnion);
 
             var csgIntersection = new CsgIntersection()
                 .Add(cylinderX)
                 .Add(cylinderY)
                 .Add(cylinderZ)
-                .AddModifiers(new Pigment(new PovColor(0, 1, 0)))
+                .AddModifiers(new Pigment(_Green))
                 .Translate(0, 0, 3);
 
             scene.Add(csgIntersection);
@@ -111,7 +111,7 @@ namespace PovSharp.XUnit.Scenes
             var csgDifference = new CsgDifference(cylinderX)
                 .Add(cylinderY)
                 .Add(cylinderZ)
-                .AddModifiers(new Pigment(new PovColor(0, 0, 1)))
+                .AddModifiers(new Pigment(_Blue))
                 .Translate(3, 0, -3);
 
             scene.Add(csgDifference);
@@ -140,7 +140,7 @@ namespace PovSharp.XUnit.Scenes
                     Center = spline[i * 1.0 / N],
                     Radius = 0.1
                 }
-                    .AddModifiers(new Pigment(new PovColor((i / (double)N + 1) / 2, 0, 0)));
+                    .AddModifiers(new Pigment(_RGB((i / (double)N + 1) / 2, 0, 0)));
                 scene.Add(sphere);
             }
             var path = engine.Render(scene, options, false);
@@ -160,7 +160,7 @@ namespace PovSharp.XUnit.Scenes
                             .Add(new PovVector(1), 0.25)
                             .Add(v, n)
                             .Add(new PovVector(3, 0, 1), 1)
-                            .AddModifiers(new Pigment(new PovColor(1, 0,0 ))));
+                            .AddModifiers(new Pigment(_Red)));
             scene.Add(sphereSweep);
             var path = engine.Render(scene, options, false);
         }

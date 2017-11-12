@@ -14,9 +14,9 @@ namespace PovSharp.XUnit.Scenes
             var blob = new Blob();
             blob.AddModifiers(new Pigment() {Color = new PovColor(0, 0, 1)});
             scene.Add(blob);
-            blob.AddSphere(X, 1, 2);
-            blob.AddSphere(Y, 1, 2);
-            blob.AddSphere(Z, 1, 2);
+            blob.AddSphere(_X, 1, 2);
+            blob.AddSphere(_Y, 1, 2);
+            blob.AddSphere(_Z, 1, 2);
         }
 
         [Fact(Skip="true")]
