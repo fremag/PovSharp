@@ -29,8 +29,9 @@ namespace PovSharp.Scenes
             return element;
         }
 
-        public void Add(AbstractPovElement element) {
+        public PovScene Add(AbstractPovElement element) {
             Elements.Add(element);
+            return this;
         }
 
         public IEnumerable<string> ToPovCode() => Elements.Select(element => element.Name ?? element.ToPovCode());

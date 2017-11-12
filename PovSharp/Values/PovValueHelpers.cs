@@ -17,11 +17,11 @@ namespace PovSharp.Values
         public static readonly PovColor _White = new PovColor("White", 1, 1, 1);
         public static readonly PovColor _Black = new PovColor("Black", 0, 0, 0);
 
-        public PovVector _V(double d) => new PovVector(d);
+        public static PovVector _V(double d) => new PovVector(d);
 
-        public PovVector _V(double x, double y, double z) => new PovVector(x, y, z);
-        public PovNumber _N(double d) => new PovNumber(d);
+        public static PovVector _V(double x, double y, double z) => new PovVector(x, y, z);
+        public static PovNumber _N(double d) => new PovNumber(d);
 
-        public PovColor _RGB(PovNumber red, PovNumber green, PovNumber blue) => new PovColor(red, green, blue);
+        public static PovColor _RGB(PovNumber red, PovNumber green, PovNumber blue) => new PovColor(red, green, blue);
     }
 }
