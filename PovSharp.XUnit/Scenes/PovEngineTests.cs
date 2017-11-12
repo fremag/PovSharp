@@ -88,9 +88,9 @@ namespace PovSharp.XUnit.Scenes
         {
             scene.Name = "TestCsg";
 
-            var cylinderX = scene.Declare("cylinderX", new Cylinder() { BasePoint = new PovVector(-2, 0, 0), CapPoint = new PovVector(2, 0, 0), Radius = 0.5 });
-            var cylinderY = scene.Declare("cylinderY", new Cylinder() { BasePoint = new PovVector(0, -2, 0), CapPoint = new PovVector(0, 2, 0), Radius = 0.5 });
-            var cylinderZ = scene.Declare("cylinderZ", new Cylinder() { BasePoint = new PovVector(0, 0, -2), CapPoint = new PovVector(0, 0, 2), Radius = 0.5 });
+            var cylinderX = scene.Declare("cylinderX", new Cylinder() { BasePoint = _V(-2, 0, 0), CapPoint = _V(2, 0, 0), Radius = 0.5 });
+            var cylinderY = scene.Declare("cylinderY", new Cylinder() { BasePoint = _V(0, -2, 0), CapPoint = _V(0, 2, 0), Radius = 0.5 });
+            var cylinderZ = scene.Declare("cylinderZ", new Cylinder() { BasePoint = _V(0, 0, -2), CapPoint = _V(0, 0, 2), Radius = 0.5 });
 
             var csgUnion = new CsgUnion()
                 .Add(cylinderX)
@@ -123,13 +123,13 @@ namespace PovSharp.XUnit.Scenes
         {
             scene.Name = "TestSpline";
 
-            var n = scene.Declare("myNumber", new PovNumber(0.5));
-            var v = scene.Declare("myVector", new PovVector(1, 0, 3));
+            var n = scene.Declare("myNumber", _N(0.5));
+            var v = scene.Declare("myVector", _V(1, 0, 3));
 
             var spline = new PovSpline("MySpline") { SplineType = PovSpline.SplineTypeName.natural_spline }
-                           .Add(0, new PovVector(0))
+                           .Add(0, _V(0))
                            .Add(n, v)
-                           .Add(1, new PovVector(3, 0, 1));
+                           .Add(1, _V(3, 0, 1));
 
             scene.Declare(spline);
             const int N = 50;
@@ -151,15 +151,15 @@ namespace PovSharp.XUnit.Scenes
         {
             scene.Name = "TestSphereSweep";
 
-            var n = scene.Declare("myNumber", new PovNumber(0.5));
-            var v = scene.Declare("myVector", new PovVector(1, 0, 3));
+            var n = scene.Declare("myNumber", _N(0.5));
+            var v = scene.Declare("myVector", _V(1, 0, 3));
 
             var sphereSweep = scene.Declare("MySphereSweep", new SphereSweep() { SplineType = SphereSweep.CubicSpline }
-                            .Add(new PovVector(0), 0.5)
-                            .Add(new PovVector(-1), 1)
-                            .Add(new PovVector(1), 0.25)
+                            .Add(_V(0), 0.5)
+                            .Add(_V(-1), 1)
+                            .Add(_V(1), 0.25)
                             .Add(v, n)
-                            .Add(new PovVector(3, 0, 1), 1)
+                            .Add(_V(3, 0, 1), 1)
                             .AddModifiers(new Pigment(_Red)));
             scene.Add(sphereSweep);
             var path = engine.Render(scene, options, false);
