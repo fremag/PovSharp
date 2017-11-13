@@ -56,10 +56,10 @@ namespace PovSharp.Transformations
             return povObject;
         }
         public static T ScaleX<T>(this T povObject, PovNumber scaleX) where T : AbstractPovObject
-        => povObject.Scale(scaleX, 0, 0);
+        => povObject.Scale(scaleX, 1, 1);
         public static T ScaleY<T>(this T povObject, PovNumber scaleY) where T : AbstractPovObject
-        => povObject.Scale(0, scaleY, 0);
+        => povObject.Scale(1, scaleY, 1);
         public static T ScaleZ<T>(this T povObject, PovNumber scaleZ) where T : AbstractPovObject
-        => povObject.Scale(0, 0, scaleZ);
+        => povObject.Scale(1, 1, scaleZ);
     }
 }
