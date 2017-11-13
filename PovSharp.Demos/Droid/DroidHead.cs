@@ -26,6 +26,7 @@ namespace PovSharp.Demos.Droid
             var skull = new CsgDifference(
                 new Sphere() { Center = _V(0, rSkull, 0), Radius = rSkull })
                 .Add(new Box() { Corner1 = _V(-1), Corner2 = _V(1, yBottomSkull, 1) });
+            Local(nameof(skull), skull);
 
             var neck = new CsgDifference(
                 new Cone()
@@ -36,6 +37,7 @@ namespace PovSharp.Demos.Droid
                 })
                 .Add(new Box() { Corner1 = _V(-1, yBottomSkull - hNeck, -1), Corner2 = _V(1, -1, 1) })
                 ;
+            Local(nameof(neck), neck);
 
             var topRing = new Box() { Corner1 = _V(-1, 0, -1), Corner2 = _V(1, 1, 1) }.Scale(1, hTopRing, 1).Translate(0, yTopRing, 0);
             var bottomRing = new Box() { Corner1 = _V(-1, 0, -1), Corner2 = _V(1, 1, 1) }.Scale(1, hBottomRing, 1);
@@ -73,10 +75,10 @@ namespace PovSharp.Demos.Droid
             .AddModifiers(decoPigmentMajor);
             ;
 
-            Add(skull);
-            Add(neck);
             Add(majorDeco);
             Add(minorDeco);
+            Add(skull);
+            Add(neck);
 
             AddModifiers(mainPigment);
             this.Translate(_V(0, -yBottomSkull + hNeck, 0));

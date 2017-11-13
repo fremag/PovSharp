@@ -12,7 +12,7 @@
                 "&&",
                 "dotnet",
                 "build",
-                "${workspaceRoot}/PovSharp.Demos/PovSharp.Demos.csproj"
+                "${workspaceRoot}/PovSharp.sln"
             ],
             "isBuildCommand": true,
             "problemMatcher": "$msCompile"

@@ -5,7 +5,7 @@ namespace PovSharp.Csg
 {
     public abstract class AbstractCsgObject : AbstractPovObject
     {
-        [PovField(1, After = "\n")]
+        [PovField(2, After = "\n")]
         protected PovList<AbstractPovObject> ObjectList { get; set; } = new PovList<AbstractPovObject>("\n");
 
         protected AbstractCsgObject()

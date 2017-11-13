@@ -7,6 +7,8 @@ namespace PovSharp.Core
     {
         public abstract string Type { get; }
         private List<AbstractObjectModifier> Modifiers { get; } = new List<AbstractObjectModifier>();
+        private List<LocalElement> Locals { get; set; } = new List<LocalElement>();
+
         protected AbstractPovObject() : this(null)
         {
 
@@ -18,7 +20,14 @@ namespace PovSharp.Core
 
         public override string ToPovCode()
         {
-            string povCode = $"{Type} {{\n {this.BuildPovCode()}";
+            string povCode = $"{Type} {{\n ";
+            if (Locals.Any())
+            {
+                povCode += "\n";
+                povCode += string.Join("\n", Locals.Select(mod => mod.ToPovCode()));
+                povCode += "\n";
+            }
+            povCode += this.BuildPovCode();
             if (Modifiers.Any())
             {
                 povCode += "\n";
@@ -40,6 +49,12 @@ namespace PovSharp.Core
                 Modifiers.Add(modifier);
             }
             return this;
+        }
+
+        public AbstractPovElement Local(string name, AbstractPovElement element)
+        {
+            Locals.Add(new LocalElement(name, element));
+            return element;
         }
     }
 }
