@@ -20,8 +20,8 @@ namespace PovSharp.Demos
             PovEngineOptions options = new PovEngineOptions() { Height = 480, Width = 640, PreviewStartSize = 32, PreviewEndSize = 16, PauseWhenDone = true };
 
             var mainPigment = new Pigment(_White);
-            var decoPigmentMinor = new Pigment(new PovColor(0.25));
-            var decoPigmentMajor = new Pigment(_Red);
+            var decoPigmentMinor = new Pigment(_Gray20);
+            var decoPigmentMajor = new Pigment(_Orange);
 
             var droid = new DroidObject(mainPigment, decoPigmentMajor, decoPigmentMinor);
             droid.AddModifiers(new Pigment(new PovColor(1, 0, 0)));

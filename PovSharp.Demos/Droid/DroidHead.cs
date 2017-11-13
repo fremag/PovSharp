@@ -17,12 +17,19 @@ namespace PovSharp.Demos.Droid
         const double yMiddleRing = 0.38;
         const double hTopRing = 0.08;
         const double hBottomRing = 0.04;
+        const double rBigEye = 0.12;
+        const double yBigEye = 0.31;
+        const double rSmallEye = 0.08;
+        const double ySmallEye = 0.21;
+        const double aSmallEye = -25;
+
         public double Heigth => hSkull + hNeck;
         public DroidHead(Pigment mainPigment, Pigment decoPigmentMajor, Pigment decoPigmentMinor)
         {
             double yBottomSkull = 2 * rSkull - hSkull;
             double rBottomSkull = Math.Sqrt(Math.Pow(rSkull, 2) - Math.Pow(hSkull - rSkull, 2));
 
+            #region SkullNeck
             var skull = new CsgDifference(
                 new Sphere() { Center = _V(0, rSkull, 0), Radius = rSkull })
                 .Add(new Box() { Corner1 = _V(-1), Corner2 = _V(1, yBottomSkull, 1) });
@@ -38,13 +45,20 @@ namespace PovSharp.Demos.Droid
                 .Add(new Box() { Corner1 = _V(-1, yBottomSkull - hNeck, -1), Corner2 = _V(1, -1, 1) })
                 ;
             Local(nameof(neck), neck);
-
+            #endregion
+            #region Deco
             var smallDecoBox = new Box() { Corner1 = _V(-1, 0, -1), Corner2 = _V(1, 1, 1) };
             Local(nameof(smallDecoBox), smallDecoBox);
 
             var topRing = new PovObject(smallDecoBox).ScaleY(hTopRing).TranslateY(yTopRing);
             var bottomRing = new PovObject(smallDecoBox).ScaleY(hBottomRing);
-            var middleRing = new PovObject(smallDecoBox).ScaleY(hBottomRing).TranslateY(yMiddleRing);
+
+            var middleRing = new CsgDifference(
+                new PovObject(smallDecoBox)
+                    .ScaleY(hBottomRing)
+                    .TranslateY(yMiddleRing))
+                .Add(new Cylinder { BasePoint = _V(0, yBigEye, 0), CapPoint = _V(0, yBigEye, 2), Radius = rBigEye * 1.2 })
+                ;
 
             var minorDecoElements = new CsgUnion()
                 .Add(topRing)
@@ -59,9 +73,10 @@ namespace PovSharp.Demos.Droid
             ;
 
             var miscDeco = new CsgUnion();
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 6; i++)
             {
-                miscDeco.Add(new PovObject(smallDecoBox).Scale(1, hTopRing, 0.05).RotateY(15 * i));
+                miscDeco.Add(new PovObject(smallDecoBox).Scale(1, hTopRing, 0.02).RotateY(30 * i+15));
+                miscDeco.Add(new PovObject(smallDecoBox).Scale(1, hTopRing, 0.05).RotateY(30 * i));
             }
 
             miscDeco.TranslateY(hBottomRing)
@@ -77,12 +92,22 @@ namespace PovSharp.Demos.Droid
                 .Add(majorDecoElements)
                 .AddModifiers(decoPigmentMajor);
             ;
+            #endregion
 
+            double zBigEye = Math.Sqrt(Math.Pow(rSkull, 2) - Math.Pow(yBigEye, 2));
+            var bigEye = new Sphere { Center = _V(0, yBigEye + yBottomSkull, zBigEye), Radius = rBigEye }
+                .AddModifiers(new Pigment(_Black));
+            double zSmallEye = Math.Sqrt(Math.Pow(rSkull, 2) - Math.Pow(ySmallEye, 2));
+            var smallEye = new Sphere { Center = _V(0, ySmallEye + yBottomSkull, zSmallEye), Radius = rSmallEye }
+                .RotateY(aSmallEye)
+                .AddModifiers(new Pigment(_Black));
+
+            Add(bigEye);
+            Add(smallEye);
             Add(majorDeco);
             Add(minorDeco);
             Add(skull);
             Add(neck);
-
             AddModifiers(mainPigment);
             this.TranslateY(-yBottomSkull + hNeck);
         }
