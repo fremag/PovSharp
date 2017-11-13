@@ -39,40 +39,43 @@ namespace PovSharp.Demos.Droid
                 ;
             Local(nameof(neck), neck);
 
-            var topRing = new Box() { Corner1 = _V(-1, 0, -1), Corner2 = _V(1, 1, 1) }.Scale(1, hTopRing, 1).Translate(0, yTopRing, 0);
-            var bottomRing = new Box() { Corner1 = _V(-1, 0, -1), Corner2 = _V(1, 1, 1) }.Scale(1, hBottomRing, 1);
-            var middleRing = new Box() { Corner1 = _V(-1, 0, -1), Corner2 = _V(1, 1, 1) }.Scale(1, hBottomRing, 1).Translate(0, yMiddleRing, 0);
+            var smallDecoBox = new Box() { Corner1 = _V(-1, 0, -1), Corner2 = _V(1, 1, 1) };
+            Local(nameof(smallDecoBox), smallDecoBox);
+
+            var topRing = new PovObject(smallDecoBox).ScaleY(hTopRing).TranslateY(yTopRing);
+            var bottomRing = new PovObject(smallDecoBox).ScaleY(hBottomRing);
+            var middleRing = new PovObject(smallDecoBox).ScaleY(hBottomRing).TranslateY(yMiddleRing);
 
             var minorDecoElements = new CsgUnion()
-            .Add(topRing)
-            .Add(bottomRing)
-            .Translate(0, yBottomSkull, 0)
+                .Add(topRing)
+                .Add(bottomRing)
+                .TranslateY(yBottomSkull)
             ;
 
             var minorDeco = new CsgIntersection()
-            .Add(new Sphere() { Center = _V(0, rSkull, 0), Radius = rSkull * 1.0005 })
-            .Add(minorDecoElements)
-            .AddModifiers(decoPigmentMinor);
+                .Add(new Sphere() { Center = _V(0, rSkull, 0), Radius = rSkull * 1.0005 })
+                .Add(minorDecoElements)
+                .AddModifiers(decoPigmentMinor);
             ;
 
             var miscDeco = new CsgUnion();
             for (int i = 0; i < 10; i++)
             {
-                miscDeco.Add(new Box() { Corner1 = _V(-1, 0, -1), Corner2 = _V(1, 1, 1) }.Scale(1, hTopRing, 0.05).Rotate(0, 15 * i, 0));
+                miscDeco.Add(new PovObject(smallDecoBox).Scale(1, hTopRing, 0.05).RotateY(15 * i));
             }
 
-            miscDeco.Translate(0, hBottomRing, 0)
+            miscDeco.TranslateY(hBottomRing)
             ;
 
             var majorDecoElements = new CsgUnion()
-            .Add(middleRing)
-            .Add(miscDeco)
-            .Translate(0, yBottomSkull, 0)
+                .Add(middleRing)
+                .Add(miscDeco)
+                .TranslateY(yBottomSkull)
             ;
             var majorDeco = new CsgIntersection()
-            .Add(new Sphere() { Center = _V(0, rSkull, 0), Radius = rSkull * 1.0005 })
-            .Add(majorDecoElements)
-            .AddModifiers(decoPigmentMajor);
+                .Add(new Sphere() { Center = _V(0, rSkull, 0), Radius = rSkull * 1.0005 })
+                .Add(majorDecoElements)
+                .AddModifiers(decoPigmentMajor);
             ;
 
             Add(majorDeco);
@@ -81,7 +84,7 @@ namespace PovSharp.Demos.Droid
             Add(neck);
 
             AddModifiers(mainPigment);
-            this.Translate(_V(0, -yBottomSkull + hNeck, 0));
+            this.TranslateY(-yBottomSkull + hNeck);
         }
     }
 }
