@@ -51,7 +51,7 @@ namespace PovSharp.Core
             return this;
         }
 
-        public AbstractPovElement Local(string name, AbstractPovElement element)
+        public T Local<T>(string name, T element) where T : AbstractPovElement
         {
             Locals.Add(new LocalElement(name, element));
             return element;
