@@ -26,7 +26,7 @@ namespace PovSharp.Demos
             var droid = new DroidObject(mainPigment, decoPigmentMajor, decoPigmentMinor);
             droid.AddModifiers(new Pigment(new PovColor(1, 0, 0)));
 
-            scene.Add(new Camera() { Location = _V(0, 0.20, 2), LookAt = new PovVector(0, 0.25, 0) })
+            scene.Add(new Camera() { Location = _V(0, 1.5, 4), LookAt = new PovVector(0, 1, 0) })
             .Add(new Light())
             .Add(new Plane().AddModifiers(new Pigment(_Green)))
             .Add(new Sphere() { Center = _V(0, droid.Head.Heigth+0.1,0), Radius=0.1 }.AddModifiers(new Pigment(_Blue)))
