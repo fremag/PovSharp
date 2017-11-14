@@ -109,5 +109,24 @@ namespace PovSharp.XUnit.Values
             Check.That(result.Y).IsEqualTo(35);
             Check.That(result.Z).IsEqualTo(42);
         }
+
+        [Fact]
+        public void AnonymousVectorMinusTest()
+        {
+            var result = -w;
+            Check.That(result.Name).IsEqualTo("-< 4, 5, 6>");
+            Check.That(result.X).IsEqualTo(-4);
+            Check.That(result.Y).IsEqualTo(-5);
+            Check.That(result.Z).IsEqualTo(-6);
+        }
+        [Fact]
+        public void VectorMinusTest()
+        {
+            var result = -v;
+            Check.That(result.Name).IsEqualTo("-v");
+            Check.That(result.X).IsEqualTo(-1);
+            Check.That(result.Y).IsEqualTo(-2);
+            Check.That(result.Z).IsEqualTo(-3);
+        }
     }
 }
