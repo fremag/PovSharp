@@ -28,5 +28,13 @@ namespace PovSharp.Csg
             }
             return this;
         }
+        public AbstractCsgObject Add(params AbstractPovObject[] objects)
+        {
+            foreach (var obj in objects)
+            {
+                Add(obj);
+            }
+            return this;
+        }
     }
 }
