@@ -50,11 +50,11 @@ namespace PovSharp.Demos.Droid
             var smallDecoBox = new Box() { Corner1 = _V(-1, 0, -1), Corner2 = _V(1, 1, 1) };
             Local(nameof(smallDecoBox), smallDecoBox);
 
-            var topRing = new PovObject(smallDecoBox).ScaleY(hTopRing).TranslateY(yTopRing);
-            var bottomRing = new PovObject(smallDecoBox).ScaleY(hBottomRing);
+            var topRing = smallDecoBox.Obj().ScaleY(hTopRing).TranslateY(yTopRing);
+            var bottomRing = smallDecoBox.Obj().ScaleY(hBottomRing);
 
             var middleRing = new CsgDifference(
-                new PovObject(smallDecoBox)
+                    smallDecoBox.Obj()
                     .ScaleY(hBottomRing)
                     .TranslateY(yMiddleRing))
                 .Add(new Cylinder { BasePoint = _V(0, yBigEye, 0), CapPoint = _V(0, yBigEye, 2), Radius = rBigEye * 1.2 })
@@ -75,16 +75,17 @@ namespace PovSharp.Demos.Droid
             var miscDeco = new CsgUnion();
             for (int i = 0; i < 6; i++)
             {
-                miscDeco.Add(new PovObject(smallDecoBox).Scale(1, hTopRing, 0.02).RotateY(30 * i+15));
-                miscDeco.Add(new PovObject(smallDecoBox).Scale(1, hTopRing, 0.05).RotateY(30 * i));
+                miscDeco.Add(
+                    smallDecoBox.Obj().Scale(1, hTopRing, 0.02).RotateY(30 * i+15), 
+                    smallDecoBox.Obj().Scale(1, hTopRing, 0.05).RotateY(30 * i));
             }
 
             miscDeco.TranslateY(hBottomRing)
             ;
 
-            var majorDecoElements = new CsgUnion()
-                .Add(middleRing)
-                .Add(miscDeco)
+            var majorDecoElements = new CsgUnion().Add(
+                middleRing, 
+                miscDeco)
                 .TranslateY(yBottomSkull)
             ;
             var majorDeco = new CsgIntersection()
@@ -102,12 +103,7 @@ namespace PovSharp.Demos.Droid
                 .RotateY(aSmallEye)
                 .AddModifiers(new Pigment(_Black));
 
-            Add(bigEye);
-            Add(smallEye);
-            Add(majorDeco);
-            Add(minorDeco);
-            Add(skull);
-            Add(neck);
+            Add(bigEye, smallEye, majorDeco, minorDeco, skull, neck);
             AddModifiers(mainPigment);
             this.TranslateY(-yBottomSkull + hNeck);
         }

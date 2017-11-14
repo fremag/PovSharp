@@ -4,6 +4,6 @@ namespace PovSharp.Objects
 {
     public static class PovObjectHelpers
     {
-        public static PovObject _Obj(this AbstractPovObject obj) => new PovObject(obj);
+        public static PovObject Obj(this AbstractPovObject obj) => new PovObject(obj);
     }
 }
