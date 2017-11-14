@@ -9,11 +9,12 @@ Experimental area to test .Net Core and Visual Studio Code.
 C# wrapper for [Pov Ray](http://www.povray.org)
 
 Pov-Ray has its own [Scene Description Language](http://www.povray.org/documentation/3.7.0/r3_3.html#r3_3)
-Unfortunately, I couldn't find a modern editors to edit scenes.
+Unfortunately, I couldn't find a modern editor to write scenes.
+
 Modern = auto completion, refactoring (rename objects for instance), code navigation, find object references.
 
-I can't write such an editor but I now Visual Code exists for both Windows and Linux.
-But there is no extensions for PovRay (and I can't write one myself)
+I can't write such an editor but I know Visual Code exists for both Windows and Linux.
+But there is no extension for PovRay (and I can't write one myself)
 
 So I decided to use Visual Code to edit C# and wrap SDL objects in C#.
 
