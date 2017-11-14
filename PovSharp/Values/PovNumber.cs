@@ -87,5 +87,32 @@ namespace PovSharp.Values
         {
             return !(num1 == num2);
         }
+
+        public static PovNumber operator *(PovNumber num1, PovNumber num2)
+        {
+            return NumberOp("*", num1, num2, num1.Value * num2.Value);
+        }
+        public static PovNumber operator /(PovNumber num1, PovNumber num2)
+        {
+            return NumberOp("/", num1, num2, num1.Value / num2.Value);
+        }
+        public static PovNumber operator +(PovNumber num1, PovNumber num2)
+        {
+            return NumberOp("+", num1, num2, num1.Value + num2.Value);
+        }
+        public static PovNumber operator -(PovNumber num1, PovNumber num2)
+        {
+            return NumberOp("-", num1, num2, num1.Value - num2.Value);
+        }
+        public static PovNumber operator -(PovNumber num)
+        {
+            return  new PovNumber( $"-{num.Name??num.ToPovCode()}", -num.Value);
+        }
+
+        private static PovNumber NumberOp(string symbol, PovNumber num1, PovNumber num2, double newValue)
+        {
+            var result = new PovNumber( $"({num1.Name??num1.ToPovCode()} {symbol} {num2.Name??num2.ToPovCode()})", newValue);
+            return result;
+        }
     }
 }
