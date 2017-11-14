@@ -19,9 +19,9 @@ namespace PovSharp.Demos.Droid
 
             // Sides
             var ring = new CsgDifference(
-                new Cylinder { BasePoint = _V(0), CapPoint = _V(0, 0, rBody), Radius = rOutterSide }
+                new Cylinder { BasePoint = _Zero, CapPoint = rBody * _Z, Radius = rOutterSide }
                 )
-                .Add(new Cylinder { BasePoint = _V(0), CapPoint = _V(0, 0, rBody + 0.1), Radius = rInnerSide })
+                .Add(new Cylinder { BasePoint = _Zero, CapPoint =(rBody + 0.1) * _Z, Radius = rInnerSide })
             ;
 
             Local(nameof(ring), ring);

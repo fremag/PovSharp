@@ -4,6 +4,7 @@ namespace PovSharp.Values
 {
     public class PovValueHelpers
     {
+        public static readonly PovVector _Zero = new PovVector(0, 0, 0);
         public static readonly PovVector _X = new PovVector(1, 0, 0);
         public static readonly PovVector _Y = new PovVector(0, 1, 0);
         public static readonly PovVector _Z = new PovVector(0, 0, 1);

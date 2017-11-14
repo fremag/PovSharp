@@ -39,7 +39,7 @@ namespace PovSharp.Scenes
 
         public PovScene Add(params AbstractPovElement[] elements)
         {
-            foreach (var element in Elements)
+            foreach (var element in elements)
             {
                 Add(element);
             }
