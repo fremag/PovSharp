@@ -58,5 +58,16 @@ namespace PovSharp.Values
             hash *= 23 + Z.GetHashCode();
             return hash;
         }
+
+        public static PovVector operator *(PovVector vector, PovNumber num)
+        {
+            string name = $"{vector.Name??vector.ToPovCode()} * {num.Name??num.ToPovCode()}";
+            return new PovVector(name, vector.X * num, vector.Y * num, vector.Z * num);
+        }
+        public static PovVector operator *(PovNumber num, PovVector vector)
+        {
+            string name = $"{num.Name??num.ToPovCode()} * {vector.Name??vector.ToPovCode()}";
+            return new PovVector(name, vector.X * num, vector.Y * num, vector.Z * num);
+        }
     }
 }
