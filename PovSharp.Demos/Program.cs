@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using PovSharp.Demos.Droid;
 using PovSharp.Lights;
@@ -13,7 +14,6 @@ namespace PovSharp.Demos
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello New World!");
             PovScene scene = new PovScene() { Name = "Droid" };
 
             PovEngine engine = new PovEngine(@"c:\Program Files\POV-Ray\v3.7\bin\pvengine64.exe", @"e:\tmp");
@@ -26,13 +26,16 @@ namespace PovSharp.Demos
             var droid = new DroidObject(mainPigment, decoPigmentMajor, decoPigmentMinor);
             droid.AddModifiers(new Pigment(new PovColor(1, 0, 0)));
 
-            scene.Add(new Camera() { Location = _V(0, 1.5, 4), LookAt = new PovVector(0, 1, 0) })
-            .Add(new Light())
-            .Add(new Plane().AddModifiers(new Pigment(_Green)))
-            .Add(new Sphere() { Center = _V(0, droid.Head.Heigth+0.1,0), Radius=0.1 }.AddModifiers(new Pigment(_Blue)))
-;
+            scene.Add(
+                new Camera() { Location = _V(0, 1.5, 4), LookAt = new PovVector(0, 1, 0) },
+                new Light(), 
+                new Plane().AddModifiers(new Pigment(_Green)),
+                new Sphere() { Center = _V(0, droid.Head.Heigth+0.1,0), Radius=0.1 }.AddModifiers(new Pigment(_Blue))
+            );
             scene.Add(droid);
-            var path = engine.Render(scene, options, false);
+            var (path, process) = engine.Render(scene, options);
+            process.WaitForExit();
+            Process.Start(@"C:\Program Files (x86)\XnView\xnview.exe", @"e:\tmp\droid.png");
         }
     }
 }

@@ -9,28 +9,40 @@ namespace PovSharp.Scenes
     {
         public PovScene()
         {
-            Add(new IncludeStatement{IncludeFile ="colors.inc"});
+            Add(new IncludeStatement { IncludeFile = "colors.inc" });
         }
 
-        public string Name {get; set;}
-        public string Description {get; set;}
-        
-        protected List<AbstractPovElement> Elements {get;} = new List<AbstractPovElement>();
-        public T Declare<T>(string elementName, T element) where T : AbstractPovElement {
+        public string Name { get; set; }
+        public string Description { get; set; }
+
+        protected List<AbstractPovElement> Elements { get; } = new List<AbstractPovElement>();
+        public T Declare<T>(string elementName, T element) where T : AbstractPovElement
+        {
             DeclareElement decl = new DeclareElement(elementName, element);
             Elements.Add(decl);
             element.Name = elementName;
             return element;
         }
-        public T Declare<T>(T element) where T : AbstractPovElement {
+        public T Declare<T>(T element) where T : AbstractPovElement
+        {
             var name = element.Name;
             element.Name = null;
             Declare(name, element);
             return element;
         }
 
-        public PovScene Add(AbstractPovElement element) {
+        public PovScene Add(AbstractPovElement element)
+        {
             Elements.Add(element);
+            return this;
+        }
+
+        public PovScene Add(params AbstractPovElement[] elements)
+        {
+            foreach (var element in Elements)
+            {
+                Add(element);
+            }
             return this;
         }
 
