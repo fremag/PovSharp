@@ -74,5 +74,15 @@ namespace PovSharp.Values
             string name = $"-{vector.Name??vector.ToPovCode()}";
             return new PovVector(name, -vector.X, -vector.Y, -vector.Z);
         }
-    }
+        public static PovVector operator +(PovVector v1, PovVector v2)
+        {
+            string name = $"({v1.Name??v1.ToPovCode()} + {v2.Name??v2.ToPovCode()})";
+            return new PovVector(name, v1.X + v2.X, v1.Y + v2.Y, v1.Z + v2.Z);
+        }
+        public static PovVector operator -(PovVector v1, PovVector v2)
+        {
+            string name = $"({v1.Name??v1.ToPovCode()} - {v2.Name??v2.ToPovCode()})";
+            return new PovVector(name, v1.X - v2.X, v1.Y - v2.Y, v1.Z - v2.Z);
+        }
+   }
 }
