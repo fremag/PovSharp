@@ -25,7 +25,8 @@ light_source {
 
 pigment {
  color rgb < 1, 1, 1>
-}};
+}
+};
 MySphere".Replace("\r", string.Empty);
         [Fact]
         public void TestScene1()

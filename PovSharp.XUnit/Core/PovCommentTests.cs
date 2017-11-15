@@ -47,7 +47,8 @@ light_source {
 
 pigment {
  color rgb < 1, 1, 1>
-}};
+}
+};
 /* Some comment again */
 MySphere";
             Check.That(povCode).IsEqualTo(myScene.Replace("\r", string.Empty));

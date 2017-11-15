@@ -32,6 +32,7 @@ namespace PovSharp.Core
             {
                 povCode += "\n";
                 povCode += string.Join("\n", Modifiers.Select(mod => mod.ToPovCode()));
+                povCode += "\n";
             }
             povCode += "}";
             return povCode;
