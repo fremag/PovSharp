@@ -6,7 +6,7 @@ namespace PovSharp.Csg
     public abstract class AbstractCsgObject : AbstractPovObject
     {
         [PovField(2, After = "\n")]
-        protected PovList<AbstractPovObject> ObjectList { get; set; } = new PovList<AbstractPovObject>("\n");
+        protected PovList<AbstractPovElement> ObjectList { get; set; } = new PovList<AbstractPovElement>("\n");
 
         protected AbstractCsgObject()
         {
@@ -26,6 +26,11 @@ namespace PovSharp.Csg
             {
                 ObjectList.Add(obj);
             }
+            return this;
+        }
+        public AbstractCsgObject Comment(string text)
+        {
+            ObjectList.Add(new PovComment{Text=text});
             return this;
         }
         public AbstractCsgObject Add(params AbstractPovObject[] objects)

@@ -11,18 +11,21 @@ namespace PovSharp.Demos.Droid
         public DroidObject(Pigment mainPigment, Pigment decoPigmentMajor, Pigment decoPigmentMinor)
         {
             Head = new DroidHead(mainPigment, decoPigmentMajor, decoPigmentMinor);
-                 Body = new DroidBody(mainPigment, decoPigmentMajor, decoPigmentMinor);
+            Body = new DroidBody(mainPigment, decoPigmentMajor, decoPigmentMinor);
+
+            Comment("*****************\nHead\n***********************");
             Add(
                 Head
-                .TranslateY(Body.Height.Value*0.97)
+                .TranslateY(Body.Height.Value * 0.97)
             );
+            Comment("*****************\nBody\n***********************");
             Add(
                 Body
             );
         }
 
         public DroidHead Head { get; }
-             public DroidBody Body {get;}
+        public DroidBody Body { get; }
     }
-    
+
 }

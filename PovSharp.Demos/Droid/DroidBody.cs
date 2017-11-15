@@ -35,7 +35,7 @@ namespace PovSharp.Demos.Droid
                 bidule.Obj().RotateZ(3*90)
                 )
                 ;
-
+            Local(nameof(side), side);
             var sides = new CsgUnion().Add(
                 side.Obj().RotateY(0*90),
                 side.Obj().RotateY(1*90),
